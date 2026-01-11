@@ -1,0 +1,6 @@
+# Runtime Log: Tool Execution Gate
+
+## Policies
+
+1. **Non-Blocking**: Tool log failures do not block build.
+2. **Debug Only**: Use for diagnosing tool failures.

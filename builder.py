@@ -1,0 +1,789 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+@dataclass(frozen=True)
+class Template:
+    rel_path: str
+    content: str
+
+
+def _kit_root() -> Path:
+    return Path(__file__).resolve().parent
+
+
+def _read_template(rel_path: str) -> Template:
+    p = _kit_root() / "templates" / rel_path
+    return Template(rel_path=rel_path, content=p.read_text(encoding="utf-8"))
+
+
+def _collect_template_files(template_subdir: str) -> list[Template]:
+    base = _kit_root() / "templates" / template_subdir
+    if not base.exists():
+        return []
+
+    templates: list[Template] = []
+    for p in sorted(base.rglob("*")):
+        if p.is_dir():
+            continue
+        rel = str(p.relative_to(_kit_root() / "templates"))
+        templates.append(Template(rel_path=rel, content=p.read_text(encoding="utf-8")))
+
+    return templates
+
+
+def _write_file(root: Path, rel_path: str, content: str, *, overwrite: bool) -> None:
+    out = root / rel_path
+    out.parent.mkdir(parents=True, exist_ok=True)
+    if out.exists() and not overwrite:
+        return
+    out.write_text(content, encoding="utf-8")
+
+
+def _ensure_gitignore_has_logs(root: Path) -> None:
+    if not (root / ".git").exists():
+        return
+
+    gitignore_path = root / ".gitignore"
+    existing = (
+        gitignore_path.read_text(encoding="utf-8") if gitignore_path.exists() else ""
+    )
+
+    # We want to ignore .logs/* but allow specific audit subfolders.
+    # This block ensures the base exclusion exists, but advanced un-ignore rules
+    # are better managed manually or by a specialized migration function to avoid
+    # corrupting complex gitignores. For now, we ensure basic .logs/ is NOT just blanket ignored
+    # if we want to commit things inside it?
+    # Actually, standard pattern:
+    # .logs/*
+    # !.logs/changes/
+    # etc.
+
+    # Let's inspect if we should completely rewrite the logs section.
+    # We will append the correct block if missing.
+    block = "\n# Builder Unified Logs\n.logs/*\n!.logs/changes/\n!.logs/decisions/\n!.logs/ingestion/\n!.logs/navigation/\n!.logs/README.md\n"
+
+    if "# Builder Unified Logs" in existing:
+        return
+
+    if existing and not existing.endswith("\n"):
+        existing += "\n"
+
+    new = existing + block
+    gitignore_path.write_text(new, encoding="utf-8")
+
+
+def _merge_vscode_tasks(existing: dict, required_task: dict) -> dict:
+    tasks = existing.get("tasks")
+    if not isinstance(tasks, list):
+        tasks = []
+
+    # Do not duplicate by label
+    for t in tasks:
+        if isinstance(t, dict) and t.get("label") == required_task.get("label"):
+            return {**existing, "tasks": tasks}
+
+    tasks.append(required_task)
+    version = existing.get("version") or "2.0.0"
+    return {**existing, "version": version, "tasks": tasks}
+
+
+def _git_last_commit_date_dd_mm_yyyy(repo_root: Path) -> str:
+    """Return the last git commit date for repo_root formatted as DD-MM-YYYY.
+
+    Falls back to today's UTC date if git is unavailable or repo has no commits.
+    """
+
+    try:
+        out = subprocess.check_output(
+            [
+                "git",
+                "-C",
+                str(repo_root),
+                "log",
+                "-1",
+                "--format=%cs",
+            ],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip()
+        # %cs is YYYY-MM-DD
+        dt = datetime.strptime(out, "%Y-%m-%d")
+    except Exception:
+        dt = datetime.now(timezone.utc)
+
+    return dt.strftime("%d-%m-%Y")
+
+
+def _nav_is_excluded_dir(name: str) -> bool:
+    excluded = {
+        ".git",
+        ".logs",
+        ".local",
+        ".canon",
+        "node_modules",
+        "dist",
+        "build",
+        "coverage",
+        "__pycache__",
+        ".venv",
+        ".pytest_cache",
+    }
+    allowed_dot_dirs = {".builder", ".toolkit", ".vscode", ".github", ".cursor"}
+    if name in excluded:
+        return True
+    if name.startswith(".") and name not in allowed_dot_dirs:
+        return True
+    return False
+
+
+def _nav_dir_summary(rel_dir: Path) -> str:
+    name = rel_dir.name
+    if rel_dir == Path("."):
+        return "Repository root: entry points, packages, and top-level policies."
+
+    mapping = {
+        "src": "Primary source code for this area.",
+        "server": "Backend services, APIs, and server runtime.",
+        "client": "Client app and UI entry points.",
+        "packages": "Workspace packages and shared libraries.",
+        "shared": "Shared code used across multiple packages.",
+        "scripts": "Automation scripts and development helpers.",
+        "tests": "Test suites and fixtures.",
+        "docs": "Documentation and reference materials.",
+        ".builder": "Repo-agnostic builder kit (generation + validation).",
+        ".toolkit": "Repo-agnostic tool surface generated by the builder.",
+        ".vscode": "Editor tasks and workspace configuration.",
+        ".github": "Repository automation (CI, agents, prompts, instructions).",
+        ".cursor": "Editor rules and context scaffolding.",
+    }
+    return mapping.get(name, "Folder summary not yet curated. Add notes as you learn.")
+
+
+def _collect_repo_dirs(repo_root: Path, *, max_depth: int, max_dirs: int) -> list[Path]:
+    out: list[Path] = []
+
+    def walk(rel: Path, depth: int) -> None:
+        nonlocal out
+        if len(out) >= max_dirs:
+            return
+        out.append(rel)
+        if depth >= max_depth:
+            return
+
+        abs_dir = (repo_root / rel).resolve()
+        try:
+            children = list(abs_dir.iterdir())
+        except OSError:
+            return
+
+        subdirs = []
+        for c in children:
+            if not c.is_dir() or c.is_symlink():
+                continue
+            if _nav_is_excluded_dir(c.name):
+                continue
+            subdirs.append(c.name)
+
+        for name in sorted(subdirs):
+            walk(rel / name, depth + 1)
+
+    walk(Path("."), 0)
+    return out
+
+
+def _nav_list_dir(
+    repo_root: Path, rel_dir: Path, *, max_files: int
+) -> tuple[list[str], list[str]]:
+    abs_dir = (repo_root / rel_dir).resolve()
+    try:
+        entries = list(abs_dir.iterdir())
+    except OSError:
+        return ([], [])
+
+    subdirs: list[str] = []
+    files: list[str] = []
+
+    for e in entries:
+        if e.is_symlink():
+            continue
+        if e.is_dir():
+            if _nav_is_excluded_dir(e.name):
+                continue
+            subdirs.append(e.name)
+        elif e.is_file():
+            files.append(e.name)
+
+    subdirs = sorted(subdirs)
+    files = sorted(files)
+    if len(files) > max_files:
+        files = files[:max_files]
+    return (subdirs, files)
+
+
+def _nav_render_tree(
+    rel_dir: Path, subdirs: list[str], files: list[str], *, max_lines: int
+) -> str:
+    lines: list[str] = []
+    label = "/" if rel_dir == Path(".") else str(rel_dir)
+    lines.append(label)
+
+    for name in subdirs:
+        lines.append(f"  {name}/")
+        if len(lines) >= max_lines:
+            break
+
+    if len(lines) < max_lines:
+        for name in files:
+            lines.append(f"  {name}")
+            if len(lines) >= max_lines:
+                break
+
+    if len(lines) >= max_lines:
+        lines.append("  …")
+
+    return "\n".join(lines)
+
+
+def _nav_write_dir_page(
+    repo_root: Path,
+    nav_root: Path,
+    rel_dir: Path,
+    *,
+    overwrite: bool,
+    max_files: int,
+) -> None:
+    subdirs, files = _nav_list_dir(repo_root, rel_dir, max_files=max_files)
+    summary = _nav_dir_summary(rel_dir)
+    abs_dir = (repo_root / rel_dir).resolve()
+    has_agents_gate = (abs_dir / "AGENTS.md").exists()
+
+    # Heuristic key entry points (files + folders) to make navigation reliable.
+    key_file_names = {
+        "README.md",
+        "AGENTS.md",
+        "package.json",
+        "pnpm-lock.yaml",
+        "yarn.lock",
+        "package-lock.json",
+        "turbo.json",
+        "tsconfig.json",
+        "vite.config.ts",
+        "vite.config.js",
+        "next.config.js",
+        "next.config.mjs",
+        "Dockerfile",
+        "docker-compose.yml",
+        "docker-compose.yaml",
+        "Makefile",
+        "pyproject.toml",
+        "requirements.txt",
+        "Cargo.toml",
+        "go.mod",
+        ".env.example",
+    }
+    key_dir_names = {
+        "src",
+        "packages",
+        "server",
+        "client",
+        "shared",
+        "scripts",
+        "tests",
+        "docs",
+        ".github",
+        ".vscode",
+        ".builder",
+        ".toolkit",
+        ".tools",
+    }
+
+    try:
+        all_entries = list(abs_dir.iterdir())
+    except OSError:
+        all_entries = []
+
+    key_files = sorted(
+        [e.name for e in all_entries if e.is_file() and e.name in key_file_names]
+    )
+    key_dirs = sorted(
+        [e.name for e in all_entries if e.is_dir() and e.name in key_dir_names]
+    )
+
+    title = "/" if rel_dir == Path(".") else str(rel_dir)
+    tree = _nav_render_tree(rel_dir, subdirs, files, max_lines=60)
+
+    subdir_links = "\n".join(
+        [f"- [{name}]({(rel_dir / name / 'README.md').as_posix()})" for name in subdirs]
+    )
+    if subdir_links:
+        subdir_links = subdir_links + "\n"
+
+    file_lines = "\n".join([f"- `{name}`" for name in files])
+    if file_lines:
+        file_lines = file_lines + "\n"
+
+    agents_gate_line = (
+        "- This folder contains an `AGENTS.md` subtree gate.\n"
+        if has_agents_gate
+        else ""
+    )
+
+    parts: list[str] = []
+    parts.append(f"# Navigator: {title}\n\n")
+    parts.append("## Summary\n\n")
+    parts.append(f"{summary}\n\n")
+    parts.append("## Notes for agents\n\n")
+    if agents_gate_line:
+        parts.append(agents_gate_line)
+    parts.append(
+        "- If you plan to edit files here, first locate and read the nearest `AGENTS.md`.\n"
+    )
+    parts.append(
+        "- Use `.toolkit/scan` to confirm entry points and `.toolkit/search` to jump to symbols.\n\n"
+    )
+
+    parts.append("## Key entry points\n\n")
+    if key_dirs:
+        parts.append("### Subfolders\n\n")
+        parts.append(
+            "\n".join(
+                [
+                    f"- [{name}]({(rel_dir / name / 'README.md').as_posix()})"
+                    for name in key_dirs
+                ]
+            )
+        )
+        parts.append("\n\n")
+    else:
+        parts.append("- (none detected)\n\n")
+
+    if key_files:
+        parts.append("### Files\n\n")
+        parts.append("\n".join([f"- `{name}`" for name in key_files]))
+        parts.append("\n\n")
+
+    parts.append("## Navigation history\n\n")
+    parts.append(
+        "- Record what you inspected (and why) in `.logs/navigation/**` as append-only session entries.\n\n"
+    )
+    parts.append("## Contents\n\n")
+    parts.append("### Tree\n\n")
+    parts.append("```text\n")
+    parts.append(f"{tree}\n")
+    parts.append("```\n\n")
+    parts.append("### Subfolders\n\n")
+    parts.append(subdir_links if subdir_links else "- (none)\n")
+    parts.append("\n")
+    parts.append("### Files\n\n")
+    parts.append(file_lines if file_lines else "- (none)\n")
+    parts.append("\n")
+    parts.append("## Goals (fill in)\n\n")
+    parts.append("- What does this area add to the project?\n")
+    parts.append("- What invariants must be preserved?\n\n")
+    parts.append("## Next steps\n\n")
+    parts.append(
+        "- Add 3 to 5 bullets explaining key entry points and common workflows.\n"
+    )
+
+    content = "".join(parts)
+
+    out_dir = nav_root if rel_dir == Path(".") else (nav_root / rel_dir)
+    _write_file(out_dir, "README.md", content, overwrite=overwrite)
+
+
+def _generate_navigator(target_root: Path, *, overwrite: bool) -> None:
+    repo_root = target_root
+    nav_root = repo_root / ".canon" / "navigator"
+    nav_root.mkdir(parents=True, exist_ok=True)
+
+    dirs = _collect_repo_dirs(repo_root, max_depth=6, max_dirs=600)
+
+    # Root index combines the static template header with a generated link list.
+    template_header = (
+        _read_template("canon/navigator/README.md").content.rstrip() + "\n\n"
+    )
+
+    top_level = [d for d in dirs if d != Path(".") and len(d.parts) == 1]
+    links = "\n".join([f"- [{d.name}]({d.as_posix()}/README.md)" for d in top_level])
+    if not links:
+        links = "- (no folders found)"
+
+    index = (
+        template_header
+        + "## Generated index\n\n"
+        + "Start here, then follow links deeper until you reach the target subsystem.\n\n"
+        + links
+        + "\n"
+    )
+    _write_file(nav_root, "README.md", index, overwrite=True)
+
+    # Per-folder pages
+    for rel_dir in dirs:
+        if rel_dir == Path("."):
+            continue
+        _nav_write_dir_page(
+            repo_root, nav_root, rel_dir, overwrite=overwrite, max_files=120
+        )
+
+
+def _inject_test_reporting_scripts(target_root: Path, overwrite: bool) -> None:
+    # Agnostically discover package.json files
+    pkg_paths = sorted(target_root.rglob("package.json"))
+
+    for pkg_path in pkg_paths:
+        if "node_modules" in pkg_path.parts:
+            continue
+
+        try:
+            content = pkg_path.read_text(encoding="utf-8")
+            data = json.loads(content)
+        except Exception:
+            continue
+
+        scripts = data.get("scripts", {})
+        dependencies = data.get("dependencies", {})
+        dev_dependencies = data.get("devDependencies", {})
+        all_deps = {**dependencies, **dev_dependencies}
+
+        changed = False
+        rel_pkg = pkg_path.parent.relative_to(target_root)
+        pkg_slug = rel_pkg.name if rel_pkg != Path(".") else "root"
+
+        # Determine relative path to .logs root
+        abs_logs = (target_root / ".logs").resolve()
+        abs_pkg = pkg_path.parent.resolve()
+        try:
+            # We want the output URL relative to the CWD of the script execution (usually pkg dir)
+            rel_logs = os.path.relpath(abs_logs, abs_pkg)
+        except ValueError:
+            continue
+
+        # Strategy: Vitest
+        if "vitest" in all_deps and "test" in scripts:
+            output_file = (
+                Path(rel_logs) / "test" / pkg_slug / "coverage" / "results.json"
+            )
+            cmd = f"vitest run --reporter=json --outputFile={output_file.as_posix()}"
+            if scripts.get("test:report") != cmd:
+                scripts["test:report"] = cmd
+                changed = True
+
+        # Strategy: Playwright
+        if "playwright" in all_deps and "test:e2e" in scripts:
+            output_dir = Path(rel_logs) / "test" / pkg_slug / "e2e"
+            cmd = (
+                f"playwright test --reporter=html:outputFolder={output_dir.as_posix()}"
+            )
+            if scripts.get("test:report:e2e") != cmd:
+                scripts["test:report:e2e"] = cmd
+                changed = True
+
+        if changed and overwrite:
+            data["scripts"] = scripts
+            pkg_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+            print(f"[builder] Injected test:report scripts in {pkg_path}")
+
+
+def _generate_logging_pipelines(target_root: Path, overwrite: bool) -> None:
+    # Scan for potential TypeScript/Node projects to inject logging
+    candidates: list[Path] = []
+
+    # Check root packages dir
+    packages_dir = target_root / "packages"
+    if packages_dir.exists():
+        for p in packages_dir.iterdir():
+            if p.is_dir() and (p / "package.json").exists() and (p / "src").exists():
+                candidates.append(p)
+
+    # Check standalone root project dirs
+    for name in ["server", "client", "shared", "api"]:
+        p = target_root / name
+        if p.is_dir() and (p / "package.json").exists() and (p / "src").exists():
+            candidates.append(p)
+
+    # Deduplicate
+    candidates = list(set(candidates))
+
+    if not candidates:
+        return
+
+    try:
+        template_obj = _read_template("injectable/ts-simple-logger.ts")
+    except Exception:
+        return
+
+    for project_dir in candidates:
+        service_name = project_dir.name
+        logging_dir = project_dir / "src" / "logging"
+
+        try:
+            logging_dir.mkdir(parents=True, exist_ok=True)
+            abs_logs = (target_root / ".logs").resolve()
+            abs_dest = logging_dir.resolve()
+            rel_path = os.path.relpath(abs_logs, abs_dest)
+
+            content = template_obj.content.replace(
+                "__LOG_ROOT_RELATIVE_PATH__", rel_path
+            )
+            content = content.replace("__SERVICE_NAME__", service_name)
+
+            _write_file(
+                project_dir, "src/logging/logger.ts", content, overwrite=overwrite
+            )
+
+        except Exception as e:
+            print(
+                f"[builder] Warning: Failed to inject logging for {service_name}: {e}"
+            )
+
+
+def generate(target_root: Path, *, overwrite: bool) -> None:
+    # Install templates meant for the repo root.
+    # Some files are create-only (never overwrite) to avoid clobbering local governance and guidance.
+    create_only_prefixes = (".github/",)
+    create_only_paths = {
+        ".vscode/README.md",
+        ".toolkit/README.md",
+    }
+
+    project_root_templates = _collect_template_files("project-root")
+    agents_content = None
+
+    for t in project_root_templates:
+        rel = Path(t.rel_path).relative_to("project-root")
+        rel_str = rel.as_posix()
+
+        if rel_str == "AGENTS.md":
+            agents_content = t.content
+            continue
+
+        if rel_str.startswith(create_only_prefixes) or rel_str in create_only_paths:
+            _write_file(target_root, rel_str, t.content, overwrite=False)
+            continue
+
+        _write_file(target_root, rel_str, t.content, overwrite=overwrite)
+
+    # Root AGENTS.md is a high-impact governance file in many repos.
+    # Only write it if it does not exist yet; also emit a reference copy into .canon.
+    if agents_content is None:
+        agents_content = _read_template("project-root/AGENTS.md").content
+
+    if not (target_root / "AGENTS.md").exists():
+        _write_file(target_root, "AGENTS.md", agents_content, overwrite=True)
+
+    _write_file(
+        target_root,
+        str(Path(".canon") / "AGENTS.root.md"),
+        agents_content,
+        overwrite=overwrite,
+    )
+
+    # Generate canonical knowledge base
+    for t in _collect_template_files("canon"):
+        canon_rel = Path(t.rel_path).relative_to("canon")
+        _write_file(
+            target_root, str(Path(".canon") / canon_rel), t.content, overwrite=overwrite
+        )
+
+    # Generate repo-agnostic tool scaffold
+    for t in _collect_template_files("toolkit"):
+        toolkit_rel = Path(t.rel_path).relative_to("toolkit")
+        _write_file(
+            target_root,
+            str(Path(".toolkit") / toolkit_rel),
+            t.content,
+            overwrite=overwrite,
+        )
+
+    _generate_navigator(target_root, overwrite=overwrite)
+
+    _ensure_gitignore_has_logs(target_root)
+
+    # Generate Logging and Reporting Pipelines (Agnostic Discovery)
+    _inject_test_reporting_scripts(target_root, overwrite=overwrite)
+    _generate_logging_pipelines(target_root, overwrite=overwrite)
+
+    # Ensure .vscode/tasks.json has validate:markdownlint
+    required = json.loads(_read_template("vscode/tasks.json").content)
+    required_tasks = required.get("tasks") or []
+    if not required_tasks:
+        raise SystemExit("[builder] internal error: missing required tasks template")
+    required_task = required_tasks[0]
+
+    tasks_path = target_root / ".vscode" / "tasks.json"
+    if tasks_path.exists():
+        existing = json.loads(tasks_path.read_text(encoding="utf-8"))
+    else:
+        existing = {"version": "2.0.0", "tasks": []}
+
+    merged = _merge_vscode_tasks(existing, required_task)
+    _write_file(
+        target_root,
+        ".vscode/tasks.json",
+        json.dumps(merged, indent=2) + "\n",
+        overwrite=True,
+    )
+
+
+def generate_external(
+    target_root: Path, *, slug: str, date_dd_mm_yyyy: str | None, overwrite: bool
+) -> None:
+    canon_root = target_root / ".canon"
+    external_root = canon_root / "external"
+    external_root.mkdir(parents=True, exist_ok=True)
+
+    date = date_dd_mm_yyyy or _git_last_commit_date_dd_mm_yyyy(target_root)
+    folder_name = f"{slug}-{date}"
+    out_dir = external_root / folder_name
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    source_tpl = _read_template("canon/external/external_source.template.md").content
+    linktree_tpl = _read_template("canon/external/linktree.template.md").content
+
+    source = (
+        source_tpl.replace("{{PROJECT_SLUG}}", slug)
+        .replace("{{SNAPSHOT_DATE}}", date)
+        .replace("{{UPSTREAM_URL}}", "{{UPSTREAM_URL}}")
+        .replace("{{UPSTREAM_REF}}", "{{UPSTREAM_REF}}")
+    )
+    linktree = linktree_tpl.replace("{{PROJECT_SLUG}}", slug).replace(
+        "{{SNAPSHOT_DATE}}", date
+    )
+
+    _write_file(
+        target_root,
+        str(Path(".canon") / "external" / folder_name / "external_source.md"),
+        source,
+        overwrite=overwrite,
+    )
+    _write_file(
+        target_root,
+        str(Path(".canon") / "external" / folder_name / "LINKTREE.md"),
+        linktree,
+        overwrite=overwrite,
+    )
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="builder.py")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    gen = sub.add_parser(
+        "generate", help="Generate required files and VS Code tasks in the current repo"
+    )
+    gen.add_argument(
+        "--root", default=".", help="Target repo root (default: current directory)"
+    )
+    gen.add_argument(
+        "--overwrite", action="store_true", help="Overwrite existing files"
+    )
+
+    val = sub.add_parser(
+        "validate", help="Run markdownlint validation using the kit wrapper"
+    )
+    val.add_argument(
+        "--root", default=".", help="Target repo root (default: current directory)"
+    )
+    val.add_argument(
+        "--scope",
+        choices=["generated", "repo", "paths"],
+        default="generated",
+        help=(
+            "Lint scope: generated (default) lints only .builder + .canon + .toolkit + markdown.md; "
+            "repo lints the whole repository; paths uses --path entries."
+        ),
+    )
+    val.add_argument(
+        "--path",
+        action="append",
+        default=[],
+        help="Relative path to include when --scope=paths (repeatable).",
+    )
+
+    sub.add_parser(
+        "validate-kit",
+        help="Validate the .builder kit itself (templates/spec/tools integrity)",
+    )
+
+    ext = sub.add_parser(
+        "external",
+        help="Create a new .canon/external/<slug>-DD-MM-YYYY digest scaffold",
+    )
+    ext.add_argument(
+        "--root", default=".", help="Target repo root (default: current directory)"
+    )
+    ext.add_argument(
+        "--slug", required=True, help="Project slug for the external digest folder"
+    )
+    ext.add_argument(
+        "--date",
+        default=None,
+        help="Snapshot date DD-MM-YYYY (default: last git commit date)",
+    )
+    ext.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Overwrite external_source.md/LINKTREE.md if they already exist",
+    )
+
+    args = ap.parse_args()
+
+    if args.cmd == "generate":
+        root = Path(args.root).resolve()
+        generate(root, overwrite=bool(args.overwrite))
+        print(
+            "[builder] OK: generated markdown policy + markdownlint config + VS Code task + .canon scaffold + .toolkit scaffold"
+        )
+        return 0
+
+    if args.cmd == "validate":
+        root = Path(args.root).resolve()
+        wrapper = root / ".builder" / "tools" / "run_markdownlint.py"
+        if not wrapper.exists():
+            raise SystemExit(
+                "[builder] FAIL: missing .builder/tools/run_markdownlint.py (did you copy the kit?)"
+            )
+
+        cmd = [sys.executable, str(wrapper), "--scope", str(args.scope)]
+        for p in args.path:
+            cmd.extend(["--path", p])
+
+        subprocess.check_call(cmd, cwd=root)
+        return 0
+
+    if args.cmd == "validate-kit":
+        kit_validator = _kit_root() / "tools" / "validate_kit.py"
+        if not kit_validator.exists():
+            raise SystemExit(
+                "[builder] FAIL: missing .builder/tools/validate_kit.py (kit is incomplete)"
+            )
+
+        subprocess.check_call([sys.executable, str(kit_validator)], cwd=_kit_root())
+        return 0
+
+    if args.cmd == "external":
+        root = Path(args.root).resolve()
+        generate_external(
+            root,
+            slug=str(args.slug),
+            date_dd_mm_yyyy=(str(args.date) if args.date else None),
+            overwrite=bool(args.overwrite),
+        )
+        print(f"[builder] OK: created .canon/external scaffold for '{args.slug}'")
+        return 0
+
+    raise SystemExit("unknown command")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

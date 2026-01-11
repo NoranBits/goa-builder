@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "validate:markdownlint",
+      "type": "shell",
+      "command": "python3",
+      "args": [".builder/tools/run_markdownlint.py"],
+      "problemMatcher": []
+    }
+  ]
+}
