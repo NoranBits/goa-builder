@@ -1,12 +1,12 @@
 # .logs
 
-> **Context**: Stores execution records, decision logs, and runtime telemetry. This folder is the "Black Box" of the GCAS airplane.
+> **Context**: Stores execution records, decision logs, and runtime telemetry. This folder is the "Black Box" of the GOA Builder airplane.
 
 ## Contents
 
 - **`sessions/`**: Full transcripts of AI coding sessions (Markdown).
 - **`decisions/`**: Architecture Decision Records (ADRs) or lightweight decision snippets.
-- **`telemetry/`**: Structured logs (JSON/CSV) from `.toolkit` scripts.
+- **`TELEMETRY.md`** defines the unified logging philosophy and structure.
 
 ## Retention
 
