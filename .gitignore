@@ -50,4 +50,5 @@ Thumbs.db
 *.log
 
 # Builder specific
+./session_memory.md
 session_memory.md
