@@ -1,6 +1,6 @@
 # external
 
-> **Context**: A quarantine zone for digested knowledge from other repositories or projects. This allows the GCAS to learn from outside sources without importing their entire codebase.
+> **Context**: A quarantine zone for digested knowledge from other repositories or projects. This allows the GOA Builder to learn from outside sources without importing their entire codebase.
 
 ## Purpose
 

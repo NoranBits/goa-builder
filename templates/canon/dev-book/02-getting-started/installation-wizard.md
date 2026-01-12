@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Provide a deterministic, confirmation-driven “installer” workflow for setting up the Game Creator Agent System in a new or existing repository.
+Provide a deterministic, confirmation-driven “installer” workflow for setting up the GOA Builder in a new or existing repository.
 
 This is an interaction pattern, not an external dependency: the wizard can be followed by a human, or used as a structured prompt for an agent.
 

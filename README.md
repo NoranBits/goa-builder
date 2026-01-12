@@ -1,14 +1,14 @@
-# Game Creator Agent System (The Builder Kit)
+# GOA Builder (Game Operational Agents Builder)
 
-> **The Builder** is the bootstrapping mechanism that manifests the **Game Creator Agent System (GCAS)** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
+> **The Builder** is the bootstrapping mechanism that manifests the **GOA Builder (Game Operational Agents Builder)** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
 
 **License**: [MPL-2.0](LICENSE)
 
 ---
 
-## 🧠 What is the Game Creator Agent System?
+## 🧠 What is the GOA Builder?
 
-The **Game Creator Agent System (GCAS)** is an innovative framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
+The **GOA Builder (Game Operational Agents Builder)** is an innovative framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
 
 ### Purpose and Goals
 

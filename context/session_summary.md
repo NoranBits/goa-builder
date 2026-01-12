@@ -4,7 +4,7 @@ This file captures the requirements and intent accumulated during the session th
 
 ## Primary intent
 
-- Create a **repo-agnostic** “Game Creator Agent System” bootstrap kit.
+- Create a **repo-agnostic** “GOA Builder” bootstrap kit.
 - The kit lives in `.builder/` and can be dropped into any repo.
 - The kit generates a canonical knowledge base under `.canon/`.
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-High-level mental model for the Game Creator Agent System and the repository it boots.
+High-level mental model for the GOA Builder and the repository it boots.
 
 ## Entry points
 

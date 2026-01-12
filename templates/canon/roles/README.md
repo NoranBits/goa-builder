@@ -1,6 +1,6 @@
 # roles
 
-> **Context**: Definition of the specialized personas that collaborate within the Game Creator Agent System. These are not just "jobs" but "modes of operation" for AI agents.
+> **Context**: Definition of the specialized personas that collaborate within the GOA Builder. These are not just "jobs" but "modes of operation" for AI agents.
 
 ## Purpose
 

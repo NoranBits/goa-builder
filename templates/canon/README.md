@@ -1,6 +1,6 @@
 # .canon (Canonical Knowledge Base)
 
-This folder is the canonical knowledge base generated/maintained by the Game Creator Agent System.
+This folder is the canonical knowledge base generated/maintained by the GOA Builder (Game Operational Agents Builder).
 
 ## What belongs here
 

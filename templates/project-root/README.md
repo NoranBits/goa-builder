@@ -1,6 +1,6 @@
 # {{REPO_NAME}}
 
-> **Context**: This repository is managed with the assistance of the Game Creator Agent System (GCAS).
+> **Context**: This repository is managed with the assistance of the GOA Builder.
 
 ## Overview
 

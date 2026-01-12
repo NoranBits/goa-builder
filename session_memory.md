@@ -1,4 +1,4 @@
-# Session Memory: Builder v3 Migration & Game Creator Kit
+# Session Memory: Builder v3 Migration & GOA Builder Kit
 
 ## Transcript
 
@@ -8,7 +8,7 @@
 
 - **Context:** Builder v3 Restructure (Migration from `docs/` to `.canon/` & `.builder`)
 - **Status:** Scaffolding Phase Complete (Structure, Runner, Templates, Specs generated)
-- **Objective:** Create a repo-agnostic "Game Creator Agent System" installer (`.builder`) that bootstraps a strictly structured development environment (`.canon` + `.logs`) without relying on legacy `docs/` or `chatmodes` constraints.
+- **Objective:** Create a repo-agnostic "GOA Builder" installer (`.builder`) that bootstraps a strictly structured development environment (`.canon` + `.logs`) without relying on legacy `docs/` or `chatmodes` constraints.
 - **Key Architecture Shifts:** 
     - `docs/canonical` $\to$ `.canon` (Root Source of Truth).
     - Fixed Agent Count (5) $\to$ 5 Core + Unlimited Roles via `.canon/roles`.
@@ -28,7 +28,7 @@
     - Integration: Establish logic for 5 automated agents (Researcher, Planner, QA, LogHandler, Orchestrator) working with a "digest" of the repo.
 
 **AI Response & Planning:**
-- Proposed "Root .canon Game Creator Bootstrap".
+- Proposed "Root .canon GOA Builder Bootstrap".
 - Defined the "Digested Repo Book" pipeline (Dev-book 01–15).
 - Acknowledged removal of legacy checks (`validate_docs.py` constraints on `chatmodes`).
 
@@ -209,7 +209,7 @@ Searched for regex `docs/inspiration/projects/.*/upstream|upstream/\*\*` (`**/.g
 
 Read [](file:///home/nono/dev/src/dreamscape/.gitignore#90-90), lines 90 to 112
 
-## Plan: Repo‑agnosztikus Game Creator Builder
+## Plan: Repo‑agnostic GOA Builder
 
 A cél egy rétegzett “GameCreatorAgentSystem”, ami először determinisztikusan felméri a jelenlegi workspace‑et (manifests, README-k, docs, .cursor rules, CI, csomagok), majd ebből egy “digested” dev‑bookot és navigációs láncot épít, és csak ezután generál szerepköröket/agent‑feladatokat + toolokat. Közben végig betartja a Builder v3 gate-eket: append‑only log spine (.logs), CUDOS automation (upstream), és a jelenlegi invariánsokat (2 chatmode, 5 agent, fix prompt set).
 
