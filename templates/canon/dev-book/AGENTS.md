@@ -10,7 +10,7 @@ The dev-book is the canonical, curated knowledge base.
 
 - Keep docs concise and actionable.
 - Prefer stable, repo-agnostic phrasing; avoid hardcoding paths that only exist in one repo.
-- When adding new pages, add links for them from the nearest chapter and any logically organize related content pages in `README.md`.
+- When adding new pages, add links for them from the nearest chapter and any logically related content pages in `README.md`.
 
 ## Placeholders (adjust per repo)
 

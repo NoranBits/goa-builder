@@ -24,4 +24,3 @@ It is currently a **placeholder** to be filled during repository initialization.
 
 - Build: `npm run build` or `cargo build`
 - Test: `npm test` or `pytest`
-

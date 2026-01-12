@@ -1,14 +1,14 @@
-# GOA Builder (Game Operational Agents Builder)
+# Game Creator Agent System (The Builder Kit)
 
-> **The Builder** is the bootstrapping mechanism that manifests the **Game Operational Agents** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
+> **The Builder** is the bootstrapping mechanism that manifests the **GameOps Agents (GOA)** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
 
 **License**: [MPL-2.0](LICENSE)
 
 ---
 
-## 🧠 What is the GOA Builder?
+## 🧠 What is the GOA?
 
-The **GOA Builder (Game Operational Agents Builder)** is an framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
+The **Game Operational Agents (GOA)** is an context framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
 
 ### Purpose and Goals
 
@@ -23,7 +23,7 @@ The primary goal of the system is to act as an autonomous project co-developer.
 
 ## 🏗️ Architecture Overview
 
-The system architecture is modular – that grasps every aspect of the repository through dedicated agents and tools.
+The system architecture is modular – defined as an "octopus" that grasps every aspect of the repository through dedicated agents and tools.
 
 ### 1. Multi-Agent Team
 
@@ -80,10 +80,10 @@ This repository contains **The Builder** – the tool that installs the system.
 1. **Embed**: Copy this `.builder/` folder into your project root.
 
     ```bash
-    cp -r /path/to/builder-kit .builder
+    cp -r /path/to/root .builder
     ```
 
-2. **Manifest**: Run the generation script with any agent to implant the system (Agents, Canon, Toolkit) into your repo.
+2. **Manifest**: Run the generation script to implant the system (Agents, Canon, Toolkit) into your repo.
 
     ```bash
     python3 .builder/builder.py generate
@@ -97,14 +97,36 @@ This repository contains **The Builder** – the tool that installs the system.
 
 ### Directory Layout
 
+The following shows the layout of this Builder kit (what lives inside the `.builder` folder) and the primary artifacts it generates when installed into a project.
+
+Kit (this repository) — `.builder/`
+
 ```text
-/
-├── .builder/           # The Installer (Templates & Logic)
-├── .canon/             # Generated: Knowledge Base & Roles
-├── .github/            # Generated: Copilot Context & Agents (RepoManager etc.)
-├── .logs/              # Generated: Agent Memory & Telemetry
-├── .toolkit/           # Generated: Agent Tools
-├── .vscode/            # Generated: Task Configuration
-├── AGENTS.md           # Generated: Root Governance Policy
-└── markdown.md         # Generated: Documentation Standard
+.builder/                  # Builder kit: installer, templates, tools, and specs
+├── builder.py             # CLI / entrypoint used to generate and validate the kit
+├── templates/             # Templates used to scaffold a project (canon, vscode, project-root, etc.)
+│   ├── project-root/      # Templates that are copied into a target project's root
+│   │   └── .logs/         # Template for telemetry, decisions, sessions, etc.
+│   ├── canon/             # Canon templates (AGENTS.md, dev-book, roles, external sources)
+│   └── vscode/            # VS Code workspace templates (extensions, tasks)
+├── scripts/               # Helper scripts (installers, packaging helpers)
+│   └── install-builder.sh
+├── tools/                 # Local developer tools used by the kit (linting, validation)
+├── spec/                  # Specs and validation rules (structure, generate policy)
+├── docs/                  # Kit documentation and guidance
+└── RELEASE_NOTES.md
 ```
+
+Generated into a target repo (what the Builder creates)
+
+```text
+/.canon/                   # Generated: single source of truth (AGENTS.md, docs, roles)
+.logs/                     # Generated: telemetry, session memory, decisions, changes, tests
+.toolkit/                  # Generated: agent-invokable scripts and custom tools
+AGENTS.md                  # Top-level governance and policy produced by the kit
+```
+
+Notes:
+
+- The authoritative telemetry guidance for generated projects is provided in `templates/project-root/.logs/TELEMETRY.md`.
+- `.gitignore` in this kit already recommends ignoring runtime `.logs/` in projects; tracked template `.logs/` content (the guidance files) remains in `templates/` so they are installed into generated projects.

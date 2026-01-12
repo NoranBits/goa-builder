@@ -22,4 +22,4 @@ This project adheres to the **Unified Log Philosophy** defined in `TELEMETRY.md`
 
 To add logging to a new component, do not create custom log folders. Configure your runner or logger to output to `.logs/<domain>/`.
 
-See [TELEMETRY.md](../../../project-root/.logs/TELEMETRY.md) for language-specific implementation examples (Node, Python, Unity, etc.).
+See [TELEMETRY.md](../../../project-root/.logs/TELEMETRY.md) for detailed integration guidelines and multi-language examples.

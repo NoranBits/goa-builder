@@ -1,6 +1,6 @@
 # {{REPO_NAME}}
 
-> **Context**: This repository is managed with the assistance of the GOA Builder.
+> **Context**: This repository is managed with the assistance of GameOps Agents.
 
 ## Overview
 
@@ -17,5 +17,5 @@ This project uses the Standard Structure:
 
 ## Getting Started
 
-1. **Setup**: Run `.toolkit/scripts/setup.sh` (if available) or `npm install`.
-2. **Work**: Use the `.github/instructions` to guide your contributions.
+1. **Setup**: Use/generate the `.canon/dev-book` for onboarding instructions.
+2. **Work**: Use/generate the `.github/instructions` to guide your contributions.
