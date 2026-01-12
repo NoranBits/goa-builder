@@ -1,6 +1,6 @@
 {
   "name": "goa-builder",
-  "version": "0.3.2",
+  "version": "0.3.0",
   "description": "GOA Builder (Game Operational Agents Builder) — bootstrapping kit for agent-driven game development.",
   "license": "MPL-2.0",
   "repository": {
