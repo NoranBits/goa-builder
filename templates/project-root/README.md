@@ -1,15 +1,21 @@
-# Project-Root Templates
+# {{REPO_NAME}}
 
-## Purpose
+> **Context**: This repository is managed with the assistance of the Game Creator Agent System (GCAS).
 
-Files under `templates/project-root/**` are installed into the target repo root.
+## Overview
 
-## Notes
+(Add your project description here)
 
-- Some files are high-impact governance or guidance files and are created only if missing.
-- Generated `.canon/**` and `.toolkit/**` main structure should remain repo-agnostic but may include repo-specific extensions as we learn more about the repository.
+## Architecture
 
-## Placeholders (adjust per repo)
+This project uses the Standard Structure:
 
-- Repo name: `{{REPO_NAME}}`
-- Primary language/runtime: `{{PRIMARY_RUNTIME}}`
+- **`.canon`**: Source of Truth (Docs, Specs, Decisions).
+- **`.github`**: CI/CD and Agent definitions.
+- **`.toolkit`**: Local automation scripts.
+- **`src`**: Source code.
+
+## Getting Started
+
+1. **Setup**: Run `.toolkit/scripts/setup.sh` (if available) or `npm install`.
+2. **Work**: Use the `.github/instructions` to guide your contributions.

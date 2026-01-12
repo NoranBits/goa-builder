@@ -1,24 +1,35 @@
 # install
 
+> **Context**: Tools for bootstrapping the development environment and managing dependencies.
+
 ## Purpose
 
-Install tools bootstrap a dev environment and dependencies.
+Install tools ensure that the local machine is ready for development.
 
-## Suggested tools
+## Suggested Tools
 
-- `install_deps.py`: install dependencies using the repo’s package manager.
-- `doctor.py`: verify prerequisites and print actionable fixes.
+- **`setup.sh`**: The "One Script" to rule them all (calls others).
+- **`install_deps.py`**: Idempontent dependency installer (pip, npm, cargo).
+- **`check_env.py`**: Verify python version, available memory, etc.
 
-## Works well with
+## Works Well With
 
-- `build/`: ensure toolchain and dependencies exist.
-- `validate/`: install missing validators or linters.
-- `test/`: set up the environment for reliable test runs.
+- **`update/`**: Use update tools to change versions; use install to sync them.
+- **`build/`**: Install often feeds into build.
 
-## Custom tools
+## Custom Tools
 
-Use `custom-tools/` for local-only helpers.
+Use `custom-tools/` for one-off environment patches.
 
 ## Safety
 
-Install tools should be explicit about what they change.
+- Prefer virtual environments (venv, node_modules) over global installs.
+- Warn the user before modifying shell profiles (`.bashrc`).
+
+## External Context (For Generators)
+
+> **Note**: These links are just examples. Upon scanning the repository and digesting the stack, this section should be updated with accurate external context matching the project.
+
+- **Python Virtual Environments**: [venv](https://docs.python.org/3/library/venv.html) - Python isolation.
+- **NPM**: [CLI Commands](https://docs.npmjs.com/cli/v8/commands/npm-install) - Node package management.
+- **Cargo**: [The Book](https://doc.rust-lang.org/cargo/) - Rust package manager.

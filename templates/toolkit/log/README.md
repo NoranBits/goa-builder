@@ -1,30 +1,35 @@
 # log
 
+> **Context**: Helpers for structured logging, telemetry ingestion, and local log hygiene.
+
 ## Purpose
 
-Log tools collect, normalize, and analyze runtime logs.
+Log tools help manage the `.logs/` directory and ensure logs are readable.
 
-## Conventions
+## Suggested Tools
 
-- Write runtime logs under `.logs/`.
-- Keep tracked audit logs under `.logs/**`.
+- **`normalize_logs.py`**: Convert messy stdout files to JSON-JSON-Lines.
+- **`rotate_logs.sh`**: Archive old logs to save space.
+- **`tail_session.sh`**: Watch the current active session log.
 
-## Suggested tools
+## Works Well With
 
-- `collect_logs.py`: gather logs for a run into a timestamped folder.
-- `summarize_logs.py`: produce a concise error summary.
-- `redact_logs.py`: remove secrets and personal data.
+- **`.logs/`**: The destination for all outputs.
+- **`scan/`**: Scanners often generate large logs that need management.
 
-## Works well with
+## Custom Tools
 
-- `test/`: bundle failing test output and artifacts.
-- `validate/`: gather validation output into a single digest.
-- `search/`: map stack traces and errors back to code.
-
-## Custom tools
-
-Use `custom-tools/` for targeted log analyzers.
+Use `custom-tools/` for bespoke parsers (e.g., parsing a specific game engine's crash dump).
 
 ## Safety
 
-Log tools should be read-only by default.
+- Do not upload logs automatically unless strictly configured.
+- Ensure PII (Personal Identifiable Information) scrubbing if logs are shared.
+
+## External Context (For Generators)
+
+> **Note**: These links are just examples. Upon scanning the repository and digesting the stack, this section should be updated with accurate external context matching the project.
+
+- **JSON Lines**: [Format](https://jsonlines.org/) - Standard for structured logging.
+- **ELK Stack**: [Elastic](https://www.elastic.co/what-is/elk-stack) - Concepts of log aggregation.
+- **OpenTelemetry**: [Concepts](https://opentelemetry.io/docs/concepts/) - Modern observability standards.

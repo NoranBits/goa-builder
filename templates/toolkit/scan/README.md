@@ -1,38 +1,35 @@
 # scan
 
+> **Context**: Discovery tools that read the repository state to help agents understand the lay of the land.
+
 ## Purpose
 
-Scan tools answer:
+Scan tools are read-only analyzers that produce summaries or maps of the codebase.
 
-- What kind of repo is this?
-- Where are the main entry points?
-- What are the build and test commands?
-- Where do assets and content live?
+## Suggested Tools
 
-## Outputs
+- **`map_repo.py`**: updates `.canon/navigator` with a fresh map.
+- **`list_entrypoints.py`**: identify main files, routes, and public APIs.
+- **`find_large_files.sh`**: detect binary blobs or asset clusters.
 
-Typical outputs include:
+## Works Well With
 
-- A short repo summary (tech stack, packages, build system)
-- A list of key paths and “start here” files
-- Optional JSON summaries that other tools can consume
+- **`.canon/navigator`**: The primary output destination.
+- **`search/`**: Scan is high-level; search is specific query.
 
-## Works well with
+## Custom Tools
 
-- `search/`: jump from “what is this repo?” to the exact files.
-- `validate/`: choose the correct validation gates based on tech stack.
-- `test/`: select the smallest relevant test subset.
-
-## Suggested tools
-
-- `scan_repo.py`: produce a high-signal summary for agents.
-- `scan_packages.py`: list package boundaries, scripts, and dependencies.
-- `scan_assets.py`: locate asset roots and common import flows.
-
-## Custom tools
-
-Use `custom-tools/` for repo-specific scanning scripts.
+Use `custom-tools/` for deep AST analysis of specific languages.
 
 ## Safety
 
-Scan tools should be read-only.
+- Scanners must be **read-only**.
+- Avoid scanning `node_modules` or `.git` to prevent performance kills.
+
+## External Context (For Generators)
+
+> **Note**: These links are just examples. Upon scanning the repository and digesting the stack, this section should be updated with accurate external context matching the project.
+
+- **Tree Command**: [Man Page](https://linux.die.net/man/1/tree) - The classic directory visualizer.
+- **Cloc**: [Count Lines of Code](https://github.com/AlDanial/cloc) - Metrics for codebase size.
+- **Graphviz**: [DOT Language](https://graphviz.org/doc/info/lang.html) - For generating dependency graphs.

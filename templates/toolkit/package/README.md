@@ -1,24 +1,35 @@
 # package
 
+> **Context**: Tools for bundling the application for distribution (Docker, zip, installers).
+
 ## Purpose
 
-Packaging tools prepare deployable artifacts.
+Package tools take built artifacts and wrap them for deployment or release.
 
-## Suggested tools
+## Suggested Tools
 
-- `bundle_release.py`: build and bundle a release artifact.
-- `checksum_artifacts.py`: create hashes for integrity checks.
+- **`create_deployment_zip.sh`**: Create a deployable archive.
+- **`build_docker_image.sh`**: Build and tag a container image.
+- **`generate_sbom.py`**: Create a Software Bill of Materials.
 
-## Works well with
+## Works Well With
 
-- `build/`: packaging should start from a known-good build output.
-- `validate/`: run gates before publishing artifacts.
-- `log/`: store packaging logs and manifests.
+- **`build/`**: Packaging usually happens after build.
+- **`.github/workflows`**: CI often calls these scripts to publish releases.
 
-## Custom tools
+## Custom Tools
 
-Use `custom-tools/` for pipeline experiments.
+Use `custom-tools/` for store-specific packagers (SteamPipe, AppStoreConnect).
 
 ## Safety
 
-Packaging should write outputs under a dedicated folder.
+- Packaging scripts should not publish keys or secrets inside the artifact.
+- Verify checksums of included binaries.
+
+## External Context (For Generators)
+
+> **Note**: These links are just examples. Upon scanning the repository and digesting the stack, this section should be updated with accurate external context matching the project.
+
+- **Docker Best Practices**: [Dockerfile Guide](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) - Containerization standards.
+- **Semantic Versioning**: [SemVer](https://semver.org/) - Versioning logic.
+- **CycloneDX**: [SBOM Standard](https://cyclonedx.org/) - Bill of materials specification.
