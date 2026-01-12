@@ -1,6 +1,6 @@
 # GOA Builder (Game Operational Agents Builder)
 
-> **The Builder** is the bootstrapping mechanism that manifests the **GOA Builder (Game Operational Agents Builder)** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
+> **The Builder** is the bootstrapping mechanism that manifests the **Game Operational Agents** within your repository. It implants a team of specialized AI agents, memory structures, and governance protocols to automate game development.
 
 **License**: [MPL-2.0](LICENSE)
 
@@ -8,7 +8,7 @@
 
 ## 🧠 What is the GOA Builder?
 
-The **GOA Builder (Game Operational Agents Builder)** is an innovative framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
+The **GOA Builder (Game Operational Agents Builder)** is an framework that embeds a team of specialized AI agents and memory structures into a game development project. It aims to automate and optimize all aspects of game development – from coding and testing to documentation and maintenance – while collaborating with human developers.
 
 ### Purpose and Goals
 
@@ -23,7 +23,7 @@ The primary goal of the system is to act as an autonomous project co-developer.
 
 ## 🏗️ Architecture Overview
 
-The system architecture is modular – defined as an "octopus" that grasps every aspect of the repository through dedicated agents and tools.
+The system architecture is modular – that grasps every aspect of the repository through dedicated agents and tools.
 
 ### 1. Multi-Agent Team
 
@@ -83,7 +83,7 @@ This repository contains **The Builder** – the tool that installs the system.
     cp -r /path/to/builder-kit .builder
     ```
 
-2. **Manifest**: Run the generation script to implant the system (Agents, Canon, Toolkit) into your repo.
+2. **Manifest**: Run the generation script with any agent to implant the system (Agents, Canon, Toolkit) into your repo.
 
     ```bash
     python3 .builder/builder.py generate
