@@ -40,3 +40,6 @@ Thumbs.db
 
 # Logs (if any local logs are generated inside .builder during dev)
 *.log
+
+# Builder specific
+session_memory.md

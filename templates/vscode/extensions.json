@@ -1,0 +1,6 @@
+{
+  // Recommended extensions for the workspace. The builder will merge these
+  // with any existing `.vscode/extensions.json` in the target repository.
+  // Replace or inject `{{VSCODE_RECOMMENDED_EXTENSIONS}}` at generation time.
+  "recommendations": {{VSCODE_RECOMMENDED_EXTENSIONS}}
+}

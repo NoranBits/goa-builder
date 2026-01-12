@@ -7,6 +7,7 @@ This folder contains editor configuration templates that the builder installs or
 ## What gets generated
 
 - `.vscode/tasks.json` (merged): must include the stable `validate:markdownlint` task.
+- `.vscode/extensions.json` (merged): recommended extensions for the workspace. The builder will merge `recommendations` with the repo's existing recommended extensions rather than overwrite them. Use `{{VSCODE_RECOMMENDED_EXTENSIONS}}` as a placeholder in templates.
 
 ## Adjustments
 
@@ -16,3 +17,4 @@ This folder contains editor configuration templates that the builder installs or
 ## Placeholders (adjust per repo)
 
 - Primary validation tasks: `{{VSCODE_VALIDATE_TASKS}}`
+- Recommended extensions placeholder: `{{VSCODE_RECOMMENDED_EXTENSIONS}}`
