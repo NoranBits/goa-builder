@@ -95,6 +95,37 @@ This repository contains **The Builder** – the tool that installs the system.
     python3 .builder/builder.py validate-kit
     ```
 
+### Activation & Safety
+
+The Builder-Orchestrator and the internal `.builder` payload include
+    non-repo-agnostic tools and instruction files. To prevent accidental
+    modifications in a target repository, explicit human activation is required
+    before running any Builder operations that change repository structure or
+    canonical docs.
+
+Enable the Builder for non-agnostic operations by either:
+    - creating a marker file in the project root: `.builder/ALLOW_AUTOINVOKE`, or
+    - setting the environment variable: `GOA_BUILDER_ACTIVATE=1`.
+
+    Scripts and agents should verify activation before performing non-agnostic
+    work by running:
+
+    ```bash
+    python3 tools/require_activation.py || { echo "Enable builder first"; exit 1; }
+    ```
+
+    Example (human-approved flow):
+
+    ```bash
+    # human confirms
+    touch .builder/ALLOW_AUTOINVOKE
+    # validate activation then run consolidation
+    python3 tools/require_activation.py && python3 .builder/tools/consolidate_memory.py .
+    ```
+
+    This ensures generated agents and automated flows do not automatically invoke
+    the Builder-Orchestrator without explicit operator consent.
+
 ### Directory Layout
 
 The following shows the layout of this Builder kit (what lives inside the `.builder` folder) and the primary artifacts it generates when installed into a project.

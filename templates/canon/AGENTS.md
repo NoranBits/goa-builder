@@ -1,4 +1,27 @@
-# AGENTS.md (Canon Subtree Gate)
+# AGENTS.md
+
+Builder-Orchestrator
+--------------------
+
+Mission: Produce the goa-builder kit components (roles, prompts, templates)
+and enforce the Context Manifest protocol. This agent is part of the kit — it
+must not operate on external game repositories directly.
+
+System directives (summary):
+
+- Generate a `Context Manifest` before any task.
+- Prefer recent `.logs/decisions/` entries over older `.canon/` entries when
+  conflicts arise, unless explicitly told otherwise.
+- After milestones instruct the Log Handler to summarize and update `.canon/`.
+
+Planner, Researcher, Developer, QA, GitAssistant, ContextArchitect
+---------------------------------------------------------------
+
+See their role files under `.canon/roles/` for detailed missions and
+constraints. These roles are templates for generated agents in target
+projects.
+
+## AGENTS.md (Canon Subtree Gate)
 
 This gate applies to files under `.canon/**`.
 

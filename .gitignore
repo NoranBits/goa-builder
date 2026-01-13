@@ -52,3 +52,6 @@ Thumbs.db
 # Builder specific
 ./session_memory.md
 session_memory.md
+./docs/*
+docs/*
+!templates/project-root/.vscode
