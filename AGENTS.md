@@ -4,7 +4,7 @@ This repository uses the GOA builder governance model. Agents must follow the De
 
 ## Dedicated Navigation Path (DNP)
 
-Purpose: Prevent uncontrolled repo-wide searching and stabilize agent behavior in Copilot/ChatGPT sessions.
+Purpose: Prevent uncontrolled repo-wide searching and stabilize agent behavior in sessions.
 
 ### The only allowed navigation order (read in sequence)
 1) `AGENTS.md` (this file)
