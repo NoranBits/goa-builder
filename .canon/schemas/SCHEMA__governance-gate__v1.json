@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Governance Gate v1",
+  "type": "object",
+  "required": ["generated_at", "approved", "checks"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "approved": { "type": "boolean" },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check_id", "status", "message"],
+        "properties": {
+          "check_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pass", "fail", "skip", "warn"] },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "required_next_actions": { "type": "array", "items": { "type": "string" } }
+  }
+}

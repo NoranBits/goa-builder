@@ -1,0 +1,22 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "STRUCT-001",
+      "severity": "error",
+      "description": "Root governance must exist (AGENTS.md).",
+      "checks": [
+        { "type": "path_exists", "path": "AGENTS.md" }
+      ]
+    },
+    {
+      "rule_id": "STRUCT-002",
+      "severity": "error",
+      "description": "Canon + toolkit surfaces must exist.",
+      "checks": [
+        { "type": "path_exists", "path": ".canon/README.md" },
+        { "type": "path_exists", "path": ".toolkit/README.md" }
+      ]
+    }
+  ]
+}

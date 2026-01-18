@@ -1,0 +1,35 @@
+name: goa-gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-and-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run builder validation (generated surfaces)
+        run: |
+          python3 builder.py validate --scope generated
+
+      - name: Run governance gate
+        run: |
+          chmod +x .toolkit/validate/governance_gate.sh
+          .toolkit/validate/governance_gate.sh .
+
+      - name: Upload SARIF (if produced)
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: .logs/test

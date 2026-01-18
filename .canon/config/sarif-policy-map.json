@@ -1,0 +1,20 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "GOA-POLICY-001",
+      "severity_default": "error",
+      "canon_refs": [
+        ".canon/policies/POLICY__dedicated-navigation-path__v1.md",
+        "AGENTS.md"
+      ],
+      "description": "Agents must follow DNP and may only scan via the approved toolkit refresh script.",
+      "examples": [
+        {
+          "message": "Repository scan detected outside approved tool.",
+          "path_hint": ".toolkit/scan/refresh_navigator.*"
+        }
+      ]
+    }
+  ]
+}

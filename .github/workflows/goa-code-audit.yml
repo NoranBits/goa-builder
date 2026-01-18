@@ -1,0 +1,28 @@
+name: GOA - Code Audit (SARIF)
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  goa_code_audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run GOA Code Auditor (SARIF)
+        run: |
+          python3 builder.py validate --scope generated
+          # Example: your future auditor entrypoint:
+          # python .builder/tools/run_code_auditor.py --format sarif --out .logs/validation/code-auditor.sarif
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: .logs/validation/code-auditor.sarif
+          category: goa-code-auditor
