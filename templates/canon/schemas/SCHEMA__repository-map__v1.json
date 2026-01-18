@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Repository Map v1",
+  "type": "object",
+  "required": ["generated_at", "root", "detected_stack", "dirs"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "root": { "type": "string" },
+    "detected_stack": { "type": "array", "items": { "type": "string" } },
+    "dirs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "summary", "key_files"],
+        "properties": {
+          "path": { "type": "string" },
+          "summary": { "type": "string" },
+          "key_files": { "type": "array", "items": { "type": "string" } },
+          "policy_gate_present": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

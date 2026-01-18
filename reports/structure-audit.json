@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-01-17T22:51:58.618250+00:00",
+  "violations": [
+    {
+      "severity": "warn",
+      "path": "AGENTS.md",
+      "rule_id": "structure.missing_agents_md",
+      "message": "AGENTS.md not found at repository root",
+      "evidence": []
+    },
+    {
+      "severity": "warn",
+      "path": "navigator/context-index.json",
+      "rule_id": "navigator.missing_index",
+      "message": "Navigator context index missing",
+      "evidence": []
+    }
+  ]
+}

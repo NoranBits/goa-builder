@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structure Audit v1",
+  "type": "object",
+  "required": ["generated_at", "violations"],
+  "properties": {
+    "generated_at": { "type": "string", "format": "date-time" },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "path", "rule_id", "message"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["info", "warn", "error"] },
+          "path": { "type": "string" },
+          "rule_id": { "type": "string" },
+          "message": { "type": "string" },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
