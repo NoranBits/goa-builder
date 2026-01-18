@@ -63,10 +63,10 @@ else
   add_check "GATE-04" "warn" "No test/audit evidence present for today."
 fi
 
-approved="true"
+approved="True"
 required_next_actions="[]"
 if [[ "$fail_count" -gt 0 ]]; then
-  approved="false"
+  approved="False"
   required_next_actions='["Fix failing gates; rerun governance_gate.sh"]'
 fi
 
@@ -82,7 +82,7 @@ print(json.dumps(data, indent=2))
 PY
 
 echo "[governance] Wrote gate decision: $OUT_FILE"
-if [[ "$approved" != "true" ]]; then
+if [[ "$approved" != "True" ]]; then
   echo "[governance] NOT APPROVED"
   exit 2
 fi

@@ -55,3 +55,11 @@ session_memory.md
 ./docs/*
 docs/*
 !templates/project-root/.vscode
+
+# Builder Unified Logs
+.logs/*
+!.logs/changes/
+!.logs/decisions/
+!.logs/ingestion/
+!.logs/navigation/
+!.logs/README.md
