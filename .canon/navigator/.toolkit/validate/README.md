@@ -30,6 +30,7 @@ Folder summary not yet curated. Add notes as you learn.
   README.md
   governance_gate.ps1
   governance_gate.sh
+  parse_conftest_json.py
   validate_repo.ps1
   validate_repo.sh
 ```
@@ -43,6 +44,7 @@ Folder summary not yet curated. Add notes as you learn.
 - `README.md`
 - `governance_gate.ps1`
 - `governance_gate.sh`
+- `parse_conftest_json.py`
 - `validate_repo.ps1`
 - `validate_repo.sh`
 

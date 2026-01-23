@@ -1,8 +1,8 @@
-# Navigator: .builder
+# Navigator: docs/orchestrators/BO
 
 ## Summary
 
-Repo-agnostic builder kit (generation + validation).
+Folder summary not yet curated. Add notes as you learn.
 
 ## Notes for agents
 
@@ -22,18 +22,23 @@ Repo-agnostic builder kit (generation + validation).
 ### Tree
 
 ```text
-.builder
-  package/
-  builder.py
+docs/orchestrators/BO
+  builder-orchestrator-generator.txt
+  builder-orchestrator.instruction.md
+  chatgpt-goa-builder-architecture-analysis.txt
+  gemini-goa-builder-architecture-analysis.txt
 ```
 
 ### Subfolders
 
-- [package](.builder/package/README.md)
+- (none)
 
 ### Files
 
-- `builder.py`
+- `builder-orchestrator-generator.txt`
+- `builder-orchestrator.instruction.md`
+- `chatgpt-goa-builder-architecture-analysis.txt`
+- `gemini-goa-builder-architecture-analysis.txt`
 
 ## Goals (fill in)
 

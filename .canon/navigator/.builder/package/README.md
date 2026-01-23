@@ -1,8 +1,8 @@
-# Navigator: .builder
+# Navigator: .builder/package
 
 ## Summary
 
-Repo-agnostic builder kit (generation + validation).
+Folder summary not yet curated. Add notes as you learn.
 
 ## Notes for agents
 
@@ -22,18 +22,17 @@ Repo-agnostic builder kit (generation + validation).
 ### Tree
 
 ```text
-.builder
-  package/
-  builder.py
+.builder/package
+  archives/
 ```
 
 ### Subfolders
 
-- [package](.builder/package/README.md)
+- [archives](.builder/package/archives/README.md)
 
 ### Files
 
-- `builder.py`
+- (none)
 
 ## Goals (fill in)
 

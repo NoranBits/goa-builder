@@ -1,8 +1,8 @@
-# Navigator: .builder
+# Navigator: docs/orchestrators/CSO
 
 ## Summary
 
-Repo-agnostic builder kit (generation + validation).
+Folder summary not yet curated. Add notes as you learn.
 
 ## Notes for agents
 
@@ -22,18 +22,19 @@ Repo-agnostic builder kit (generation + validation).
 ### Tree
 
 ```text
-.builder
-  package/
-  builder.py
+docs/orchestrators/CSO
+  contextual-systems-orchestrator.instruction.md
+  ocs-knowledge-base.txt
 ```
 
 ### Subfolders
 
-- [package](.builder/package/README.md)
+- (none)
 
 ### Files
 
-- `builder.py`
+- `contextual-systems-orchestrator.instruction.md`
+- `ocs-knowledge-base.txt`
 
 ## Goals (fill in)
 

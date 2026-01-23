@@ -27,16 +27,35 @@ Documentation and reference materials.
 
 ```text
 docs
+  orchestrators/
+  00_Index__LLM_Expert_Profiles_Bundle_v1.txt
+  01_LLM_Data_Scientist__Evidence_Grounded_Evaluation_and_Data_Engineering.txt
+  02_Prompt_Engineer__Instruction_Contracts_Tool_Orchestration_and_Injection_Resistance.txt
+  03_Context_Architect__Context_Layering_Memory_RAG_and_Trust_Boundaries.txt
   README.md
+  general_role_profile__senior_context_architect.txt
+  general_role_profile__senior_llm_data_scientist.txt
+  general_role_profile__senior_prompt_engineer.txt
+  relevent_from_task_00_og_context.txt
+  relevent_from_task_01_relevent_external_sources.txt
 ```
 
 ### Subfolders
 
-- (none)
+- [orchestrators](docs/orchestrators/README.md)
 
 ### Files
 
+- `00_Index__LLM_Expert_Profiles_Bundle_v1.txt`
+- `01_LLM_Data_Scientist__Evidence_Grounded_Evaluation_and_Data_Engineering.txt`
+- `02_Prompt_Engineer__Instruction_Contracts_Tool_Orchestration_and_Injection_Resistance.txt`
+- `03_Context_Architect__Context_Layering_Memory_RAG_and_Trust_Boundaries.txt`
 - `README.md`
+- `general_role_profile__senior_context_architect.txt`
+- `general_role_profile__senior_llm_data_scientist.txt`
+- `general_role_profile__senior_prompt_engineer.txt`
+- `relevent_from_task_00_og_context.txt`
+- `relevent_from_task_01_relevent_external_sources.txt`
 
 ## Goals (fill in)
 

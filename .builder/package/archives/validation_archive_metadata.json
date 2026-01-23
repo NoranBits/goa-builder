@@ -1,0 +1,4 @@
+{
+  "archives": [],
+  "notes": "This file stores pointers to externally-archived validation artifacts (S3/GCS). Add entries via CI job after external upload."
+}

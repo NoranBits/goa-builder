@@ -1,0 +1,9 @@
+{
+  "project": "goa-builder",
+  "detected_stacks": [
+    { "name": "nodejs", "evidence": ["package.json"], "confidence": 0.9 },
+    { "name": "python", "evidence": ["tools/validate_kit.py", "bootstrap.py"], "confidence": 0.6 }
+  ],
+  "generated_at": "2026-01-24T00:00:00Z",
+  "notes": "Seeded by CSO bootstrap; run stack-detection for higher fidelity."
+}

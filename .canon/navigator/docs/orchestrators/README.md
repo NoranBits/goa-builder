@@ -1,4 +1,4 @@
-# Navigator: .builder/tools
+# Navigator: docs/orchestrators
 
 ## Summary
 
@@ -22,17 +22,19 @@ Folder summary not yet curated. Add notes as you learn.
 ### Tree
 
 ```text
-.builder/tools
-  run_markdownlint.py
+docs/orchestrators
+  BO/
+  CSO/
 ```
 
 ### Subfolders
 
-- (none)
+- [BO](docs/orchestrators/BO/README.md)
+- [CSO](docs/orchestrators/CSO/README.md)
 
 ### Files
 
-- `run_markdownlint.py`
+- (none)
 
 ## Goals (fill in)
 
