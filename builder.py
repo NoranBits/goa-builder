@@ -420,6 +420,7 @@ def _generate_navigator(target_root: Path, *, overwrite: bool) -> None:
 
     index = (
         template_header
+
         + "## Generated index\n\n"
         + "Start here, then follow links deeper until you reach the target subsystem.\n\n"
         + links
@@ -787,3 +788,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+<!-- md_autofix: processed -->
