@@ -32,3 +32,5 @@ Use `custom-tools/` for regex libraries or fuzzy matchers.
 - **Ripgrep**: [User Guide](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md) - The gold standard for code search performance.
 - **Regular Expressions**: [Regex101](https://regex101.com/) - Tool for crafting correct search patterns.
 - **Git Grep**: [Docs](https://git-scm.com/docs/git-grep) - Built-in repository search.
+
+<!-- md_autofix: processed -->

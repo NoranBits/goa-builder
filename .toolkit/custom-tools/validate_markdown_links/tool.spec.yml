@@ -1,0 +1,37 @@
+schema_version: "1.0"
+tool_id: "validate_markdown_links"
+version: "0.1.0"
+intent: "Checks for broken relative links in Markdown documentation"
+type: "analysis"
+
+entrypoint: "tool.py"
+interpreter: "python3"
+
+inputs_schema:
+  target_path:
+    type: "path"
+    description: "File or directory to scan"
+    required: true
+  dry_run:
+    type: "boolean"
+    default: true
+    description: "If true, outputs findings without writing changes"
+
+permissions:
+  read_scope: []
+  write_scope: []
+  network_access: false
+  allowed_agents: []
+
+requirements:
+  system: []
+  local_files: []
+
+outputs:
+  logs: "stdout"
+  artifacts_dir: ".logs/runs/"
+
+lifecycle:
+  status: "sandbox"
+  maintainer: "Maintainer"
+  last_validated: ""

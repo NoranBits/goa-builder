@@ -34,3 +34,5 @@ Use `custom-tools/` for architecture compliance checks (e.g., dependency directi
 - **Ruff**: [Docs](https://docs.astral.sh/ruff/) - Fast Python linter.
 - **Prettier**: [Options](https://prettier.io/docs/en/options.html) - Opinionated code formatting.
 - **MyPy**: [Cheatsheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html) - Python static typing.
+
+<!-- md_autofix: processed -->

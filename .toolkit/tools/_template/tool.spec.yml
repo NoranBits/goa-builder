@@ -1,0 +1,40 @@
+schema_version: "1.0"
+tool_id: "example_tool"
+version: "0.1.0"
+intent: "Describe the tool's intent here"
+type: "remediation" # remediation | analysis | migration | scaffold
+
+entrypoint: "tool.py"
+interpreter: "python3"
+
+inputs_schema:
+  target_path:
+    type: "path"
+    description: "File or directory to scan"
+    required: true
+  dry_run:
+    type: "boolean"
+    default: true
+    description: "If true, outputs a diff without writing changes"
+
+permissions:
+  # Scopes should be set by the tool author to match the target repository context.
+  # Avoid presuming file extensions or paths in the template; set concrete scopes when authoring.
+  read_scope: []
+  write_scope: []
+  network_access: false
+  allowed_agents: []
+
+requirements:
+  # Populate system/runtime requirements when known (e.g., python3, node, etc.).
+  system: []
+  local_files: []
+
+outputs:
+  logs: "stdout"
+  artifacts_dir: ".logs/runs/"
+
+lifecycle:
+  status: "sandbox" # sandbox | staged | promoted | deprecated
+  maintainer: "Developer"
+  last_validated: ""

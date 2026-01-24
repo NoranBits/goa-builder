@@ -33,3 +33,5 @@ Use `custom-tools/` for one-off environment patches.
 - **Python Virtual Environments**: [venv](https://docs.python.org/3/library/venv.html) - Python isolation.
 - **NPM**: [CLI Commands](https://docs.npmjs.com/cli/v8/commands/npm-install) - Node package management.
 - **Cargo**: [The Book](https://doc.rust-lang.org/cargo/) - Rust package manager.
+
+<!-- md_autofix: processed -->

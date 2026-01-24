@@ -34,3 +34,5 @@ Use `custom-tools/` for visual regression tools or specialized hardware tests.
 - **Pytest**: [Documentation](https://docs.pytest.org/en/7.1.x/) - Python testing framework.
 - **Jest**: [Docs](https://jestjs.io/) - JavaScript testing framework.
 - **Test Driven Development (TDD)**: [Martin Fowler](https://martinfowler.com/bliki/TestDrivenDevelopment.html) - Red-Green-Refactor cycle.
+
+<!-- md_autofix: processed -->

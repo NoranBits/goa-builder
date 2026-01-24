@@ -7,6 +7,7 @@ Usage:
   python3 .toolkit/scan/run_refresh_navigator.py [--root /path/to/repo] [--step-id MM.SS.TT]
 
 Behavior:
+
 - On Windows: runs `refresh_navigator.ps1` via PowerShell (`pwsh` or `powershell`).
 - On POSIX (Linux/macOS/Android-termux): runs `refresh_navigator.sh` via `bash`.
 """
@@ -79,3 +80,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+<!-- md_autofix: processed -->

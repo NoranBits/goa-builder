@@ -36,19 +36,22 @@ require_path () {
 }
 
 # GATE-02: required artifacts
+
 require_path "GATE-02A" "AGENTS.md"
 require_path "GATE-02B" ".canon/navigator/README.md"
 require_path "GATE-02C" ".toolkit/scan/refresh_navigator.sh"
 require_path "GATE-02D" ".toolkit/scan/refresh_navigator.ps1"
 
-# GATE-01: navigation refresh evidence (optional, but if scan happened today it must be logged)
+## GATE-01: navigation refresh evidence (optional, but if scan happened today it must be logged)
+
 if compgen -G "$ROOT/.logs/navigation/${DATE_UTC}__scan__navigator.md" > /dev/null; then
   add_check "GATE-01" "pass" "Navigator scan logged for today."
 else
   add_check "GATE-01" "skip" "No navigator scan log for today (ok if not needed)."
 fi
 
-# GATE-03: validate generated surfaces
+## GATE-03: validate generated surfaces
+
 if python3 "$ROOT/.builder/builder.py" validate --root "$ROOT" --scope generated; then
   add_check "GATE-03" "pass" "validate --scope generated passed."
 else
@@ -56,7 +59,8 @@ else
   fail_count=$((fail_count+1))
 fi
 
-# GATE-04: test evidence (soft requirement; promote to hard if desired)
+## GATE-04: test evidence (soft requirement; promote to hard if desired)
+
 if compgen -G "$ROOT/.logs/test/${DATE_UTC}__*.md" > /dev/null || compgen -G "$ROOT/.logs/test/${DATE_UTC}__*.sarif" > /dev/null; then
   add_check "GATE-04" "pass" "Test/audit evidence present for today."
 else
@@ -87,3 +91,5 @@ if [[ "$approved" != "True" ]]; then
   exit 2
 fi
 echo "[governance] APPROVED"
+
+<!-- md_autofix: processed -->

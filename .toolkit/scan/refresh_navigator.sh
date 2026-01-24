@@ -30,6 +30,7 @@ fi
 echo "- OK: found .builder/builder.py" >> "$LOG_FILE"
 
 # Delete navigator surface to force clean regeneration without global overwrite
+
 if [[ -d "$ROOT/.canon/navigator" ]]; then
   rm -rf "$ROOT/.canon/navigator"
   echo "- OK: removed existing .canon/navigator/" >> "$LOG_FILE"
@@ -59,3 +60,5 @@ else
 fi
 
 echo "[navigator] OK: refreshed .canon/navigator (log: $LOG_FILE)"
+
+<!-- md_autofix: processed -->

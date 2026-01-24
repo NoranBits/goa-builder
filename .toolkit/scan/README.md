@@ -33,3 +33,5 @@ Use `custom-tools/` for deep AST analysis of specific languages.
 - **Tree Command**: [Man Page](https://linux.die.net/man/1/tree) - The classic directory visualizer.
 - **Cloc**: [Count Lines of Code](https://github.com/AlDanial/cloc) - Metrics for codebase size.
 - **Graphviz**: [DOT Language](https://graphviz.org/doc/info/lang.html) - For generating dependency graphs.
+
+<!-- md_autofix: processed -->

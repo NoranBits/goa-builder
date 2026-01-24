@@ -10,6 +10,7 @@ $LogFile = Join-Path $LogDir "$DateUtc`__scan__navigator.md"
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
 @"
+
 # Navigator refresh ($DateUtc)
 
 ## Purpose
@@ -21,6 +22,7 @@ New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 - Delete `.canon/navigator/` then run `python3 .builder/builder.py generate` (no overwrite).
 
 ## Preflight
+
 "@ | Out-File -FilePath $LogFile -Encoding utf8
 
 $builder = Join-Path $Root ".builder/builder.py"
@@ -60,3 +62,5 @@ if (Test-Path $navReadme) {
 }
 
 Write-Host "[navigator] OK: refreshed .canon/navigator (log: $LogFile)"
+
+<!-- md_autofix: processed -->
