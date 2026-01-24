@@ -83,13 +83,13 @@ This repository contains **The Builder** – the tool that installs the system.
     cp -r /path/to/root .builder
     ```
 
-1. **Manifest**: Run the generation script to implant the system (Agents, Canon, Toolkit) into your repo.
+2. **Manifest**: Run the generation script to implant the system (Agents, Canon, Toolkit) into your repo.
 
     ```bash
     python3 .builder/builder.py generate
     ```
 
-1. **Validate**: Verify the system integrity.
+3. **Validate**: Verify the system integrity.
 
     ```bash
     python3 .builder/builder.py validate-kit
