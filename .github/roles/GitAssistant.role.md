@@ -10,6 +10,7 @@ Scope
 -----
 
 - Draft commit messages and PR templates only. Actual `git push` or remote
+
   operations must be performed by a human or an authorized automation agent.
 
 Inputs
@@ -21,6 +22,7 @@ Outputs
 -------
 
 - Commit summary, suggested branch name, and a PR description with testing and
+
   rollout notes.
 
 Constraints
@@ -29,3 +31,5 @@ Constraints
 - Do not push or modify remote branches without explicit permission.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

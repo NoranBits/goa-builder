@@ -11,3 +11,5 @@ Turn repository facts into an ordered plan and questionnaire.
 - Keep plan conflict-averse: prefer validation failure over heuristics.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -20,3 +20,5 @@ This gate applies to files under `.toolkit/**`.
 - Log directory: `{{TOOLKIT_LOG_DIR}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

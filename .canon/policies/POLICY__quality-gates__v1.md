@@ -40,6 +40,7 @@ Required (minimum one):
 If major repository structure changed, run:
 
 - `.toolkit/scan/refresh_navigator.*`
+
 and log to `.logs/navigation/`
 
 ## Enforcement
@@ -48,3 +49,5 @@ and log to `.logs/navigation/`
 - Orchestrator must refuse “integrate” stage if any hard gate fails.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

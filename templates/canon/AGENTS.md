@@ -11,7 +11,9 @@ System directives (summary):
 
 - Generate a `Context Manifest` before any task.
 - Prefer recent `.logs/decisions/` entries over older `.canon/` entries when
+
   conflicts arise, unless explicitly told otherwise.
+
 - After milestones instruct the Log Handler to summarize and update `.canon/`.
 
 Planner, Researcher, Developer, QA, GitAssistant, ContextArchitect
@@ -52,3 +54,5 @@ When multiple `AGENTS.md` files exist, the **nearest** one is authoritative.
 - Validation command/task: `{{CANON_VALIDATE_TASK}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

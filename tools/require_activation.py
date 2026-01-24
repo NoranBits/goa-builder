@@ -10,7 +10,6 @@ Exit code 0 when allowed, non-zero otherwise.
 """
 import os
 from pathlib import Path
-import sys
 
 
 def is_allowed(repo_root: Path) -> bool:
@@ -42,5 +41,3 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-<!-- md_autofix: processed -->

@@ -27,6 +27,8 @@ Example:
   "rationale": "Reduced allocations by reusing buffer",
   "tests": ["pytest tests/test_foo.py"]
 }
-```text
+```
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

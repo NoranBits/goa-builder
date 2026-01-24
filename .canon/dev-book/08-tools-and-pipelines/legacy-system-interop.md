@@ -63,3 +63,5 @@ Stop and request human input when:
 - A change would affect CI, release, or licensing.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

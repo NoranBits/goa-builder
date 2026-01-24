@@ -1,4 +1,5 @@
 entries:
+
   - AGENTS.md
   - .canon/README.md
   - .canon/project_facts.json
@@ -11,5 +12,10 @@ entries:
   - .logs/
 
 # Notes
+
 - This file declares the deterministic entrypoints for agent navigation per the DNP policy.
 - Agents must read files in this order when performing automated scans.
+
+<!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -23,3 +23,5 @@ This folder contains repo automation and AI-facing configuration.
 - Validation entry point: `{{VALIDATE_ENTRYPOINT}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -36,3 +36,5 @@ Use `custom-tools/` for visual regression tools or specialized hardware tests.
 - **Test Driven Development (TDD)**: [Martin Fowler](https://martinfowler.com/bliki/TestDrivenDevelopment.html) - Red-Green-Refactor cycle.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

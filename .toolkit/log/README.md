@@ -35,3 +35,5 @@ Use `custom-tools/` for bespoke parsers (e.g., parsing a specific game engine's 
 - **OpenTelemetry**: [Concepts](https://opentelemetry.io/docs/concepts/) - Modern observability standards.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

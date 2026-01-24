@@ -17,3 +17,5 @@ Coordinate the multi-step build/generation process and enforce gates.
 - A validation report.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -21,7 +21,7 @@ Install Path: `.github/agents/structure-architect.agent.md`
 Example Invocation:
 ```text
 python .toolkit/scan/build_navigator.py --index navigator/context-index.json --out NAVIGATOR.md
-```text
+```
 
 Notes:
 
@@ -29,3 +29,5 @@ Notes:
 - Emit `severity: error` entries for missing required index items.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

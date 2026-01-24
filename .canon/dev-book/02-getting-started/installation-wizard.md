@@ -59,3 +59,5 @@ This is an interaction pattern, not an external dependency: the wizard can be fo
 - If a policy conflict exists (for example, docs vs `.canon`), stop and request human resolution.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

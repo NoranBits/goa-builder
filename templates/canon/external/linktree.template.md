@@ -23,3 +23,5 @@ A curated map of the upstream project.
 - What to avoid copying directly: `{{AVOID_COPY}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

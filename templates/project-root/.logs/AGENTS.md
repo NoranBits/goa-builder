@@ -14,3 +14,5 @@ This gate applies to files under `.logs/**`.
 - Actor IDs: `{{LOG_ACTOR_IDS}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

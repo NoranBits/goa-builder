@@ -92,4 +92,3 @@ if [[ "$approved" != "True" ]]; then
 fi
 echo "[governance] APPROVED"
 
-<!-- md_autofix: processed -->

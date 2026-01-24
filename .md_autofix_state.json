@@ -1,6 +1,13 @@
 {
-  "run_count": 1,
-  "problem_counts": {},
+  "run_count": 18,
+  "problem_counts": {
+    "missing blank line after heading": 11,
+    "missing blank line before list": 37,
+    "fenced code block missing language": 7,
+    "extra top-level heading converted to H2": 1,
+    "missing blank line before heading": 2,
+    "missing blank line after list": 51
+  },
   "policies": {},
   "thresholds": {
     "auto_fix_enable": 100

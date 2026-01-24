@@ -28,7 +28,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/canon/dev-book/09-content-authoring
   README.md
-```text
+```
 
 ### Subfolders
 
@@ -48,3 +48,5 @@ templates/canon/dev-book/09-content-authoring
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

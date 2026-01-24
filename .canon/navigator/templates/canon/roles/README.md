@@ -38,7 +38,7 @@ templates/canon/roles
   QA.role.md
   README.md
   Researcher.role.md
-```text
+```
 
 ### Subfolders
 
@@ -66,3 +66,5 @@ templates/canon/roles
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -35,3 +35,5 @@ Use `custom-tools/` for database migrations strategies.
 - **SemVer Cheatsheet**: [Npm Semver](https://docs.npmjs.com/about-semantic-versioning) - Understanding carat vs tilde ranges.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

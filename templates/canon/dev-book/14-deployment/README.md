@@ -12,3 +12,5 @@ Infrastructure as Code, CI/CD pipelines, and hosting strategies.
 - CI/CD Pipelines (GitHub Actions, GitLab CI, Jenkins)
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

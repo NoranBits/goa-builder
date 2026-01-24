@@ -7,3 +7,5 @@ Naming convention:
 - `YYYY/MM/DD/HHMMSSZ_<actor>_<action>.md`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

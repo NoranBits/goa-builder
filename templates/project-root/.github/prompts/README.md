@@ -14,3 +14,5 @@ Reusable prompt templates for common workflows (scan, validate, integrate, etc.)
 - Prompt style guide: `{{PROMPT_STYLE_GUIDE}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

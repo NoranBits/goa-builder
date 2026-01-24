@@ -13,3 +13,5 @@ This gate applies to files under `.canon/roles/**`.
 - Role review owner: `{{ROLES_OWNER}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

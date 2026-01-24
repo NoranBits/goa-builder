@@ -11,3 +11,5 @@ Maintain the audit spine and ensure required validations are runnable.
 - Provide repeatable validation commands and VS Code tasks.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

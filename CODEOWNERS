@@ -1,4 +1,5 @@
 # Governance / policy surface
+
 /AGENTS.md                @goa-core
 /.canon/policies/         @goa-core
 /.canon/roles/            @goa-core
@@ -6,5 +7,7 @@
 /.github/agents/          @goa-core
 /.github/workflows/       @goa-core
 
-# Builder runtime
+## Builder runtime
+
 /.builder/                @goa-maintainers
+

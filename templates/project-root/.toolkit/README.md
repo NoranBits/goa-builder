@@ -29,3 +29,5 @@
 - Treat this folder as executable infrastructure. Validate inputs in scripts to prevent injection or corruption.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

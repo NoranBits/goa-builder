@@ -26,3 +26,5 @@ Enforcement
 Governance Sentinel will consider missing or invalid structured outputs as a failing gate (see `POLICY__quality-gates__v1.md`).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -16,3 +16,5 @@ Agent profiles define specialized behavior for codebase roles.
 - Agent count limit: `{{AGENT_PROFILE_LIMIT}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

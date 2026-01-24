@@ -39,3 +39,5 @@ Operational notes
 - Prefer read-only analysis; any write must be minimal, justified, and recorded in `.logs/navigation/` or `.logs/decisions/`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

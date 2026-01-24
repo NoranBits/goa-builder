@@ -17,3 +17,5 @@ The Builder is a self-contained Python script (`builder.py`) that operates on a 
 3. **Audit**: It enforces the existence of `.logs/` and `AGENTS.md`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

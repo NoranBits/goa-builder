@@ -25,3 +25,5 @@ To add logging to a new component, do not create custom log folders. Configure y
 See [TELEMETRY.md](../../../project-root/.logs/TELEMETRY.md) for detailed integration guidelines and multi-language examples.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

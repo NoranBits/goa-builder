@@ -8,9 +8,12 @@ Policy summary
 --------------
 
 - The Builder-Orchestrator's internal instruction set for the drag-and-drop
+
   payload is stored under `.builder/.github/` and must be used by the
   payload's internal agents.
+
 - Generated agents operating in a target project MUST NOT automatically invoke
+
   the internal Builder-Orchestrator or its internal instructions.
 
 Activation (human consent)
@@ -22,15 +25,17 @@ Builder by either creating the marker file at the repository root:
 
 ```text
 .builder/ALLOW_AUTOINVOKE
-```text
+```
 
 or exporting the environment variable:
 
 ```bash
 export GOA_BUILDER_ACTIVATE=1
-```text
+```
 
 Agents and scripts should call `tools/require_activation.py` and respect its
 exit code before proceeding with non-agnostic operations.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

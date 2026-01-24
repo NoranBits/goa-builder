@@ -10,3 +10,5 @@ Authority
 - Approve changes to prompt templates and instruction contracts under `.canon/`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

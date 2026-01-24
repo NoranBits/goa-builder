@@ -36,3 +36,5 @@ Use `custom-tools/` for architecture compliance checks (e.g., dependency directi
 - **MyPy**: [Cheatsheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html) - Python static typing.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

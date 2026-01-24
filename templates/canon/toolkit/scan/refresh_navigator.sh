@@ -19,4 +19,3 @@ jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 echo "[refresh_navigator] Wrote minimal index to $OUT_INDEX"
 exit 0
 
-<!-- md_autofix: processed -->

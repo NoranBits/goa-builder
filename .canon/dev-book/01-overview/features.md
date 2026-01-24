@@ -25,3 +25,5 @@ For each feature, capture:
 - Tech stack: `tech-stack.md`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

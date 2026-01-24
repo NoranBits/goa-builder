@@ -19,7 +19,7 @@ Install Path: `.github/agents/governance-sentinel.agent.md`
 Example Invocation:
 ```text
 python .toolkit/scan/governance_sentinel.py --audit reports/structure-audit.json --out reports/governance-decision.json
-```text
+```
 
 Notes:
 
@@ -27,3 +27,5 @@ Notes:
 - Maintain append-only `.logs/decisions/` entries when blocking.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

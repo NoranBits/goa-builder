@@ -18,3 +18,5 @@ Accelerate clean version-control workflow while keeping changes reviewable.
 - Quick review checklist for the PR.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

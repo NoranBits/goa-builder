@@ -26,3 +26,5 @@ This file captures the requirements and intent accumulated during the session th
 - `.logs/INDEX.md` is the audit spine index.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

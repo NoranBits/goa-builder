@@ -25,7 +25,7 @@ Folder summary not yet curated. Add notes as you learn.
 templates/canon/schemas
   SCHEMA__repository-map__v1.json
   SCHEMA__structure-audit__v1.json
-```text
+```
 
 ### Subfolders
 
@@ -46,3 +46,5 @@ templates/canon/schemas
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

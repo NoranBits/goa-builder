@@ -65,3 +65,5 @@ Stop work and escalate (do not guess) if:
 - conflicting policies are detected
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

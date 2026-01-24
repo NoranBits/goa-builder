@@ -24,7 +24,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/canon/templates
   TEMPLATE__scan-log__v1.md
-```text
+```
 
 ### Subfolders
 
@@ -44,3 +44,5 @@ templates/canon/templates
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

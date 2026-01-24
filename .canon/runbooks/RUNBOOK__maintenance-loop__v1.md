@@ -58,3 +58,5 @@ Write a decision record in `.logs/decisions/`.
 - Decision record documenting why
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

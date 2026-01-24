@@ -24,3 +24,5 @@ This repository should use a deterministic setup wizard or script.
 - Consult the `AGENTS.md` for governance and policy details.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

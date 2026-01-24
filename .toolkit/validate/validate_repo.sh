@@ -37,4 +37,3 @@ chmod +x "$ROOT/.toolkit/validate/governance_gate.sh"
 
 echo "[validate-repo] OK"
 
-<!-- md_autofix: processed -->

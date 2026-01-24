@@ -43,7 +43,7 @@ Use this as a reference layout. Do not copy blindly; adapt to repo needs.
   prompts/
     scan_repo.prompt.md
     validate_all.prompt.md
-```text
+```
 
 ## `.cursor/` structure (sample)
 
@@ -53,7 +53,7 @@ Use this as a reference layout. Do not copy blindly; adapt to repo needs.
     project.mdc
     markdown.mdc
     safety.mdc
-```text
+```
 
 ## Minimal checklist for new subtrees
 
@@ -62,3 +62,5 @@ Use this as a reference layout. Do not copy blindly; adapt to repo needs.
 3. Ensure changes are logged (append-only).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

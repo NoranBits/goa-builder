@@ -9,3 +9,5 @@ This gate applies to files under `.logs/ai/**`.
 3. **Retention**: These logs can be deleted at any time.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

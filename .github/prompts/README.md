@@ -10,15 +10,21 @@ Structure
 - `refactor.prompt.md` — safe refactor template for Developer workflows.
 - `validate.prompt.md` — QA validation template.
 - `copilot_system_guidance.md` — notes and condensed guidance derived from
+
   authoritative Copilot/VS Code docs (fetched via `fetch_webpage`).
 
 Usage
 -----
 
 1. The Builder-Orchestrator or Planner fills the placeholders in a prompt and
+
    issues it to the target role or agent.
+
 1. Prefer structured outputs (JSON/YAML) for machine-readability.
 2. Keep prompts short and include only the necessary context; reference
+
    `.docs/` entries for longer background.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -32,3 +32,5 @@ The task MUST run:
 - `python3 .builder/tools/run_markdownlint.py`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

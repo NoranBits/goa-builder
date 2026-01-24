@@ -32,3 +32,5 @@ Notes: Keep summaries short (max 250 words) and update `.canon/` only with
 explicitly agreed facts.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

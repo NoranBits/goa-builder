@@ -61,4 +61,3 @@ fi
 
 echo "[navigator] OK: refreshed .canon/navigator (log: $LOG_FILE)"
 
-<!-- md_autofix: processed -->

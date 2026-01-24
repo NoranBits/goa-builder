@@ -35,3 +35,5 @@ Review changes for correctness, security, and policy compliance.
 - Secondary: human summary in `.logs/test/<date>/code-audit.md`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -63,4 +63,3 @@ if (Test-Path $navReadme) {
 
 Write-Host "[navigator] OK: refreshed .canon/navigator (log: $LogFile)"
 
-<!-- md_autofix: processed -->

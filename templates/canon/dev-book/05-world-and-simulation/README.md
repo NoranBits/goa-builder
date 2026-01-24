@@ -11,3 +11,5 @@ Core logic for the virtual world, physics, or business domain simulation.
 - Simulation Loop / Ticks
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

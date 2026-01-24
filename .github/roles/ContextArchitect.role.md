@@ -11,6 +11,7 @@ Scope
 -----
 
 - Authoring canonical docs and memory guidelines. Produce summarized context
+
   that other agents can consume.
 
 Inputs
@@ -22,12 +23,16 @@ Outputs
 -------
 
 - Summaries, `.canon/` doc drafts, and recommended chunking rules for LLM
+
   consumption.
 
 Constraints
 -----------
 
 - Keep canonical docs engine-agnostic and concise. Do not store sensitive
+
   secrets in `.canon/` or `.logs/`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

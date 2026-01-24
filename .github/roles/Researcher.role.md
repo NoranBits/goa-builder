@@ -11,6 +11,7 @@ Scope
 -----
 
 - Read-only research and summarization. May call `fetch_webpage` to gather
+
   vendor docs, RFCs, and tutorials.
 
 Inputs
@@ -27,6 +28,9 @@ Constraints
 -----------
 
 - Must store or reference sources and short summaries in `.docs/` or relevant
+
   prompt files for traceability.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

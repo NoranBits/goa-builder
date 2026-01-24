@@ -39,3 +39,5 @@
 - Validation to run: `{{VALIDATION_TASKS}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

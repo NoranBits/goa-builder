@@ -13,3 +13,5 @@
 - Message: {"file": ".github/agents/good_agent.agent.md", "frontmatter": {"name": "good-agent", "description": "Well-formed agent", "tools": "['read','execute']"}}
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

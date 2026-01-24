@@ -35,3 +35,5 @@ Use `custom-tools/` for one-off environment patches.
 - **Cargo**: [The Book](https://doc.rust-lang.org/cargo/) - Rust package manager.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

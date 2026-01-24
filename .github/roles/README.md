@@ -19,3 +19,5 @@ Use these files as canonical role descriptions when generating per-project
 agent instances.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

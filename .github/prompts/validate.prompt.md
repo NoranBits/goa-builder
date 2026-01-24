@@ -21,6 +21,8 @@ Example:
   "results": {"lint": "passed","tests": {"passed": 24, "failed": 0}},
   "logs": "<link or short excerpt>"
 }
-```text
+```
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

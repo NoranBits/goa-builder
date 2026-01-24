@@ -35,3 +35,5 @@ Prevent unsafe or out-of-process changes from advancing.
 Write `SCHEMA__governance-gate__v1.json` to `.logs/decisions/` and set approved=true/false.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

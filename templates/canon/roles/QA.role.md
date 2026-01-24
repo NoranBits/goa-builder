@@ -11,3 +11,5 @@ Validate that generated artifacts match requirements and that the repo can enfor
 - Report mismatches as actionable failures.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

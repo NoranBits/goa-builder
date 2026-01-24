@@ -27,7 +27,7 @@ docs/orchestrators/BO
   builder-orchestrator.instruction.md
   chatgpt-goa-builder-architecture-analysis.txt
   gemini-goa-builder-architecture-analysis.txt
-```text
+```
 
 ### Subfolders
 
@@ -50,3 +50,5 @@ docs/orchestrators/BO
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

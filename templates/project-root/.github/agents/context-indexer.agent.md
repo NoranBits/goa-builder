@@ -20,7 +20,7 @@ Install Path: `.github/agents/context-indexer.agent.md`
 Example Invocation:
 ```text
 python .toolkit/scan/context_indexer.py --out navigator/context-index.json
-```text
+```
 
 Notes:
 
@@ -28,3 +28,5 @@ Notes:
 - Use `SCHEMA__repository-map__v1.json` for validation.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

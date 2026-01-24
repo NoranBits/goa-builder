@@ -13,3 +13,5 @@ This gate applies to files under `.vscode/**`.
 - Required tasks: `{{REQUIRED_TASK_LABELS}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

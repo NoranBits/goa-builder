@@ -21,3 +21,5 @@ High-level system design and component interactions.
 - **UML Class Diagrams**: [Mermaid.js Examples](https://mermaid.js.org/syntax/classDiagram.html) - Visualizing object structure.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

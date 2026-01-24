@@ -40,3 +40,5 @@ Follow root AGENTS.md and POLICY__dedicated-navigation-path__v1.md.
 - If emitting a structured report, use `SCHEMA__repository-map__v1.json`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -20,3 +20,5 @@ This folder contains editor configuration templates that the builder installs or
 - Recommended extensions placeholder: `{{VSCODE_RECOMMENDED_EXTENSIONS}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

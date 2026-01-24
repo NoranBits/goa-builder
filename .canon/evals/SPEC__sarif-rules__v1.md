@@ -60,3 +60,5 @@ Trigger examples:
 - Human summary: `.logs/test/YYYY-MM-DD__code-audit__summary.md`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

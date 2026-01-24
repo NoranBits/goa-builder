@@ -10,3 +10,5 @@ Authority
 - Final approver for `.canon/` changes and structure alterations.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -18,7 +18,7 @@ Use the builder command (date defaults to the repo’s last git commit date):
 
 ```bash
 python3 .builder/builder.py external --slug <project-slug>
-```text
+```
 
 This creates:
 
@@ -40,3 +40,5 @@ The templates used are stored alongside this README:
 - **SPDX Licenses**: [License List](https://spdx.org/licenses/) - Standard identifiers for open source licenses.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

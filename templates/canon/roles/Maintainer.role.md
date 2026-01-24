@@ -18,3 +18,5 @@ Keep the repo healthy: validations green, structure consistent, and guidance up 
 - Follow-up tasks for backlog.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

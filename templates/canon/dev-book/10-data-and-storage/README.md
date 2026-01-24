@@ -15,3 +15,5 @@ Data model, persistence, and schema migration strategy.
 - Describe how schema changes are applied (e.g., Rails migrations, Alembic, Drizzle Kit).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

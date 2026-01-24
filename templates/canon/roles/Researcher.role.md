@@ -11,3 +11,5 @@ Collect facts about the target repository and summarize them deterministically.
 - Produce a factual summary suitable for `.canon/`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -6,3 +6,5 @@
 2. **Debug Only**: Use for diagnosing tool failures.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

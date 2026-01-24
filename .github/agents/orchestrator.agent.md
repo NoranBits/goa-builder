@@ -18,3 +18,5 @@ Outputs: plans, workflow triggers, consolidated progress logs under `.logs/`.
 Escalation: If structural changes are needed, propose via PR and notify `Senior_Context_Architect`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -12,3 +12,5 @@
 - Do not commit to git (should be gitignored).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

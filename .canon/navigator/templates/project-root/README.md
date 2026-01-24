@@ -39,7 +39,7 @@ templates/project-root
   AGENTS.md
   README.md
   markdown.md
-```text
+```
 
 ### Subfolders
 
@@ -64,3 +64,5 @@ templates/project-root
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

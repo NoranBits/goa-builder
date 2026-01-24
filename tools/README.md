@@ -12,7 +12,7 @@ and generate concise summaries for commits. Located at `tools/git_commit_helper.
 
 Examples:
 
-```
+```text
 python3 tools/git_commit_helper.py --group-commit --push
 python3 tools/git_commit_helper.py --dry-run --group-commit
 python3 tools/git_commit_helper.py --show-old HEAD~1
@@ -28,6 +28,10 @@ New flags:
 
 Example including diffs:
 
-```
+```text
 python3 tools/git_commit_helper.py --group-commit --include-diffs --max-diff-lines 120 --diff-files-limit 2
 ```
+
+<!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

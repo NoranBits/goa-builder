@@ -10,3 +10,5 @@ Authority
 - Approve dataset- or index-related changes to `.canon/` and `.logs/`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

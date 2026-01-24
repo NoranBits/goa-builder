@@ -33,3 +33,5 @@ Purpose: give AI coding agents concise, repo-specific rules so they can be produ
 If any of these items are unclear or you'd like more examples (specific files, workflows, or tests), say which area to expand and I'll update this guidance.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

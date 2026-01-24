@@ -25,3 +25,5 @@ Rationale
 Separation reduces context-window waste, prevents instruction drift, and enables programmatic gating by making authoritative sources easy to locate and validate.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

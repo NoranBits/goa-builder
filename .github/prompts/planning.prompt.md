@@ -29,6 +29,8 @@ Example:
     {"id":1,"owner":"Developer","task":"create .github/roles/Planner.role.md","acceptance":"file exists and README references it"}
   ]
 }
-```text
+```
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

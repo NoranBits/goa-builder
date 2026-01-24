@@ -68,3 +68,5 @@ Agents and humans must record navigation decisions in `.logs/navigation/`. Gover
 See also: `.canon/policies/POLICY__quality-gates__v1.md` and `.canon/policies/POLICY__design-principles__v1.md`.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

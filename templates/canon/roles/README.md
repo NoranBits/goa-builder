@@ -40,3 +40,5 @@ Role files are guidance, but `AGENTS.md` is the operational gate.
 - **Role-Based Access Control (RBAC)**: [NIST Definition](https://csrc.nist.gov/glossary/term/role_based_access_control) - Concept of permissions tied to roles.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

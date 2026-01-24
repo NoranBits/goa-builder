@@ -24,7 +24,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/logs
   SUMMARY_TEMPLATE.md
-```text
+```
 
 ### Subfolders
 
@@ -44,3 +44,5 @@ templates/logs
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

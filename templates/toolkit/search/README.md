@@ -34,3 +34,5 @@ Use `custom-tools/` for regex libraries or fuzzy matchers.
 - **Git Grep**: [Docs](https://git-scm.com/docs/git-grep) - Built-in repository search.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

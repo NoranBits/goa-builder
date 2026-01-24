@@ -13,3 +13,5 @@ This gate applies to files under `.canon/navigator/**`.
 - Navigator regeneration command: `{{NAV_REGEN_COMMAND}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

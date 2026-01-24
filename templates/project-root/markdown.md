@@ -17,14 +17,16 @@ This repository uses strict Markdown rules.
 
 ```bash
 npm install --save-dev markdownlint-cli2
-```text
+```
 
 - Run validation:
 
 ```bash
 python3 .builder/tools/run_markdownlint.py
-```text
+```
 
 - Or run VS Code task: `validate:markdownlint`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

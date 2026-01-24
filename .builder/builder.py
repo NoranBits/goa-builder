@@ -20,4 +20,3 @@ if not os.path.exists(TARGET):
 
 os.execv(sys.executable, [sys.executable, TARGET] + sys.argv[1:])
 
-<!-- md_autofix: processed -->

@@ -25,7 +25,7 @@ Folder summary not yet curated. Add notes as you learn.
 templates/canon/toolkit/scan
   refresh_navigator.sh
   validate_repo.py
-```text
+```
 
 ### Subfolders
 
@@ -46,3 +46,5 @@ templates/canon/toolkit/scan
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

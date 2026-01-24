@@ -11,3 +11,5 @@ Documentation for end-users or developers consuming the project's output.
 - Editor tools guide
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

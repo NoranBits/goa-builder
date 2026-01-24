@@ -17,3 +17,5 @@ The dev-book is the canonical, curated knowledge base.
 - Dev-book owner: `{{DEV_BOOK_OWNER}}`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

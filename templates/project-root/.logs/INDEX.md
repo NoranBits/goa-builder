@@ -12,3 +12,5 @@
 - `navigation/`: append-only navigation session logs
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

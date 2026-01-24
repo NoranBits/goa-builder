@@ -11,3 +11,5 @@ Synchronization and communication strategies.
 - Authority Model (Client-side vs Server-side)
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

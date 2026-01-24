@@ -34,3 +34,5 @@ This dev-book is intentionally minimal at bootstrap time. It provides the **slot
 - **Mermaid.js**: [Live Editor](https://mermaid.live/) - Tool for visualizing diagrams in markdown.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

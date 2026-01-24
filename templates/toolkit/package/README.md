@@ -35,3 +35,5 @@ Use `custom-tools/` for store-specific packagers (SteamPipe, AppStoreConnect).
 - **CycloneDX**: [SBOM Standard](https://cyclonedx.org/) - Bill of materials specification.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

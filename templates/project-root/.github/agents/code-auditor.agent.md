@@ -19,7 +19,7 @@ Install Path: `.github/agents/code-auditor.agent.md`
 Example Invocation:
 ```text
 python .toolkit/scan/validate_repo.py --out reports/structure-audit.json --sarif reports/code.sarif
-```text
+```
 
 Notes:
 
@@ -27,3 +27,5 @@ Notes:
 - Map linter IDs to `rule_id` in the structure-audit output.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

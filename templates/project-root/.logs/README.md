@@ -21,3 +21,5 @@
 - **Keep a Changelog**: [Guiding Principles](https://keepachangelog.com/en/1.0.0/) - For structuring human-readable history (though automated logs differ, principles apply).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

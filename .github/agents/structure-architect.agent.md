@@ -40,3 +40,5 @@ Write only to `.logs/test/**` (or `.logs/validation/**` if present).
 Emit `SCHEMA__structure-audit__v1.json` with violations and evidence pointers.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

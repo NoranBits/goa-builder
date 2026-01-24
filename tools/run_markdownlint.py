@@ -6,8 +6,6 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
-
-
 def fail(message: str) -> None:
     raise SystemExit(f"[validate:markdownlint] FAIL: {message}")
 
@@ -173,5 +171,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-<!-- md_autofix: processed -->

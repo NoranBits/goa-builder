@@ -32,7 +32,7 @@ templates/project-root/.github/agents
   context-indexer.agent.md
   governance-sentinel.agent.md
   structure-architect.agent.md
-```text
+```
 
 ### Subfolders
 
@@ -56,3 +56,5 @@ templates/project-root/.github/agents
 - Add 3 to 5 bullets explaining key entry points and common workflows.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

@@ -26,3 +26,5 @@ It is currently a **placeholder** to be filled during repository initialization.
 - Test: `npm test` or `pytest`
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

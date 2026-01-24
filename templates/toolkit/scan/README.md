@@ -35,3 +35,5 @@ Use `custom-tools/` for deep AST analysis of specific languages.
 - **Graphviz**: [DOT Language](https://graphviz.org/doc/info/lang.html) - For generating dependency graphs.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

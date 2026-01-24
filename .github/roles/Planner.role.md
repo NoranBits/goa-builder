@@ -23,6 +23,7 @@ Outputs
 -------
 
 - Numbered plan with steps, owners (agent role names), estimated effort,
+
   and acceptance criteria.
 
 Constraints
@@ -32,3 +33,5 @@ Constraints
 - Respect the Builder-Orchestrator rule: do not modify downstream repos.
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->

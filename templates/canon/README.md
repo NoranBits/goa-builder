@@ -17,3 +17,5 @@ This folder is the canonical knowledge base generated/maintained by the GOA Buil
 - Vendored upstream code (if any, it must be stored under a dedicated upstream area and gitignored).
 
 <!-- md_autofix: processed -->
+
+<!-- md_autofix: processed by tools/md_autofix.py -->
