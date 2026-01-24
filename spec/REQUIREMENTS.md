@@ -32,7 +32,7 @@ If a `.git/` directory exists, the kit MUST ensure:
 
 ```bash
 npm install --save-dev markdownlint-cli2
-```
+```text
 
 ## Lint scope
 
@@ -56,3 +56,5 @@ The generated `.canon/dev-book/01-overview/` MUST include:
 - `tech-stack.md`
 - `architecture.md`
 - `features.md`
+
+<!-- md_autofix: processed -->

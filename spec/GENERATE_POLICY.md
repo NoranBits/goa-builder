@@ -30,3 +30,5 @@ The task label is a stable contract:
 The task MUST run:
 
 - `python3 .builder/tools/run_markdownlint.py`
+
+<!-- md_autofix: processed -->

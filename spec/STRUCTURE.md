@@ -105,7 +105,7 @@ This document describes the **required directory layout** of the `.builder/` sta
   tools/
     run_markdownlint.py
     validate_kit.py
-```
+```text
 
 ## Generated outputs (target repo)
 
@@ -121,3 +121,5 @@ The kit generates the following into the target repo root:
 If `.git/` exists, it also ensures:
 
 - `.gitignore` contains `.logs/`
+
+<!-- md_autofix: processed -->

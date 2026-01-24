@@ -13,7 +13,7 @@ The target repo MUST install markdownlint via npm:
 
 ```bash
 npm install --save-dev markdownlint-cli2
-```
+```text
 
 ## How validation runs
 
@@ -21,7 +21,7 @@ npm install --save-dev markdownlint-cli2
 
 ```bash
 python3 .builder/tools/run_markdownlint.py
-```
+```text
 
 By default, Markdownlint runs in **generated scope**:
 
@@ -34,7 +34,7 @@ To lint the entire repository (optional):
 
 ```bash
 python3 .builder/builder.py validate --scope repo
-```
+```text
 
 ## Kit self-validation
 
@@ -42,7 +42,7 @@ The kit includes a lightweight self-check that validates `.builder/` integrity:
 
 ```bash
 python3 .builder/builder.py validate-kit
-```
+```text
 
 It checks:
 
@@ -64,3 +64,5 @@ Validation excludes these directories by default:
 - `.git/**`
 - `.logs/**`
 - `docs/inspiration/projects/**/upstream/**`
+
+<!-- md_autofix: processed -->
