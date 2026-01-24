@@ -4,6 +4,7 @@ on:
   pull_request:
   push:
     branches:
+
       - main
 
 jobs:
@@ -11,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -33,3 +35,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: .logs/test
+

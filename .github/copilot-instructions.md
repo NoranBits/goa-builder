@@ -1,4 +1,5 @@
 <!-- Short, actionable guidance for AI coding agents working in this repository -->
+
 # Copilot instructions — goa-builder
 
 Purpose: give AI coding agents concise, repo-specific rules so they can be productive and safe.
@@ -30,3 +31,5 @@ Purpose: give AI coding agents concise, repo-specific rules so they can be produ
 - **When unsure:** record investigative steps in `.logs/navigation/` and open a short ADR in `.logs/decisions/` or request human review via a PR. Prefer small iterative changes.
 
 If any of these items are unclear or you'd like more examples (specific files, workflows, or tests), say which area to expand and I'll update this guidance.
+
+<!-- md_autofix: processed -->

@@ -30,3 +30,5 @@ Constraints
 
 - Deterministic language and structured output (JSON/YAML) where possible.
 - Respect the Builder-Orchestrator rule: do not modify downstream repos.
+
+<!-- md_autofix: processed -->

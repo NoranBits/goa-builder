@@ -22,13 +22,15 @@ Builder by either creating the marker file at the repository root:
 
 ```text
 .builder/ALLOW_AUTOINVOKE
-```
+```text
 
 or exporting the environment variable:
 
 ```bash
 export GOA_BUILDER_ACTIVATE=1
-```
+```text
 
 Agents and scripts should call `tools/require_activation.py` and respect its
 exit code before proceeding with non-agnostic operations.
+
+<!-- md_autofix: processed -->

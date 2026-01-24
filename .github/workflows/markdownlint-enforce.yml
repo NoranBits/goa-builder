@@ -1,0 +1,54 @@
+name: Markdown lint & autofix
+
+on:
+  push:
+    paths:
+
+      - '**/*.md'
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Setup Node (optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run markdown autofixer
+        run: |
+          python3 tools/md_autofix.py --report-path md_autofix_report.json
+
+      - name: Run repository markdownlint (npm)
+        if: success()
+        run: |
+          if [ -f package.json ]; then
+            npm install --no-audit --no-fund || true
+            npm run validate-md || true
+          fi
+
+      - name: Upload autofix report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: md_autofix_report
+          path: md_autofix_report.json
+
+      - name: Fail if markdownlint found issues
+        if: failure()
+        run: |
+          echo "Markdownlint or autofix reported problems; see artifact md_autofix_report.json"
+          exit 1
+

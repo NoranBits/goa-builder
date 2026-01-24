@@ -20,3 +20,5 @@ Integration notes
 - When adapting to Copilot Chat or VS Code Agents, include `applyTo` or
   `custom-instructions` snippets so editor-side tooling can pick up project
   conventions.
+
+<!-- md_autofix: processed -->

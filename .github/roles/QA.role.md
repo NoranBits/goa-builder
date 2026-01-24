@@ -28,3 +28,5 @@ Constraints
 
 - Prefer reproducible commands. Always include the exact command run and
   environment hints.
+
+<!-- md_autofix: processed -->

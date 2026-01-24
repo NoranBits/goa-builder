@@ -28,3 +28,5 @@ Constraints
 
 - Must store or reference sources and short summaries in `.docs/` or relevant
   prompt files for traceability.
+
+<!-- md_autofix: processed -->

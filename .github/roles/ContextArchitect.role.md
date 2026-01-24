@@ -29,3 +29,5 @@ Constraints
 
 - Keep canonical docs engine-agnostic and concise. Do not store sensitive
   secrets in `.canon/` or `.logs/`.
+
+<!-- md_autofix: processed -->

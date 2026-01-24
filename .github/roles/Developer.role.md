@@ -29,3 +29,5 @@ Constraints
 -----------
 
 - Keep changes small and reversible. Log changes in `.logs/changes/`.
+
+<!-- md_autofix: processed -->

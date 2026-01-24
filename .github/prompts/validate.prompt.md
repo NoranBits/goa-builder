@@ -4,9 +4,11 @@ Target: |
   <Files, tests, or commands to run>
 
 Commands: |
+
   - <shell command to run, e.g. `pytest -q`>
 
 Checks: |
+
   - Lint
   - Tests
   - Build
@@ -14,9 +16,11 @@ Checks: |
 OutputFormat: json
 
 Example:
-```
+```text
 {
   "results": {"lint": "passed","tests": {"passed": 24, "failed": 0}},
   "logs": "<link or short excerpt>"
 }
-```
+```text
+
+<!-- md_autofix: processed -->
