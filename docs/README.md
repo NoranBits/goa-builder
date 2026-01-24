@@ -15,3 +15,5 @@ The Builder is a self-contained Python script (`builder.py`) that operates on a 
 1. **Agnostic**: The Builder does not import project code. It inspects files (JSON/YAML) and structure.
 2. **Safe**: It defaults to `overwrite=False` for sensitive files (`create_only_paths`).
 3. **Audit**: It enforces the existence of `.logs/` and `AGENTS.md`.
+
+<!-- md_autofix: processed -->
