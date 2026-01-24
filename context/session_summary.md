@@ -24,3 +24,5 @@ This file captures the requirements and intent accumulated during the session th
 - `.canon/dev-book/` is generated with minimal content (structure first).
 - `.canon/roles/` contains the playbooks for the core agent roles.
 - `.logs/INDEX.md` is the audit spine index.
+
+<!-- md_autofix: processed -->
