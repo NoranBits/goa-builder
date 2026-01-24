@@ -17,20 +17,18 @@ import sys
 import json
 import argparse
 from pathlib import Path
-
-
+ 
+# Marker used to indicate files processed by md_autofix
+marker_local = '<!-- md_autofix: processed by tools/md_autofix.py -->'
+ 
 def find_md_files(paths):
     files = []
     if not paths:
         for root, dirs, filenames in os.walk('.'):
             for f in filenames:
                 fp = os.path.join(root, f)
-                # always include .md files
+                # only include files that end with .md (case-insensitive)
                 if f.lower().endswith('.md'):
-                    files.append(fp)
-                    continue
-                # include common markdown-like files (e.g., CODEOWNERS, README)
-                if f in ('CODEOWNERS', 'README', 'CONTRIBUTING', 'CHANGELOG'):
                     files.append(fp)
                     continue
     else:
@@ -43,9 +41,6 @@ def find_md_files(paths):
                     for f in filenames:
                         fp = os.path.join(root, f)
                         if f.lower().endswith('.md'):
-                            files.append(fp)
-                            continue
-                        if f in ('CODEOWNERS', 'README', 'CONTRIBUTING', 'CHANGELOG'):
                             files.append(fp)
                             continue
             else:
@@ -133,9 +128,20 @@ def process_file(path, state=None):
         # detect fence open/close
         m_any = fence_any_re.match(line)
         if m_any:
-            # if fence has no language (only spaces) -> add 'text'
-            if fence_open_re.match(line):
-                # policy: only auto-fix if policy allows
+            # Determine whether this is a closing fence by looking at current state
+            # (we haven't toggled yet). If it's a closing fence that incorrectly
+            # contains a language token (e.g. "```text"), normalize it to a
+            # bare closing fence "```". If it's an opening fence and missing a
+            # language, add a default language 'text'.
+            is_closing = in_fence
+            if is_closing:
+                # closing fence: if it incorrectly contains a language, normalize
+                lang = m_any.group('lang') or ''
+                if lang.strip() != '':
+                    out[i] = m_any.group('indent') + '```'
+                    fixed.append({'file': path, 'line': i + 1, 'fix': 'normalize closing fenced block marker'})
+            # opening fence: add language when missing
+            if (not in_fence) and fence_open_re.match(line):
                 problem_name = 'fenced code block missing language'
                 action = state.get('policies', {}).get(problem_name, 'auto-fix')
                 if action == 'auto-fix':
@@ -145,10 +151,7 @@ def process_file(path, state=None):
                 else:
                     problems.append({'file': path, 'line': i + 1, 'problem': problem_name})
             # toggle in_fence state
-            if not in_fence:
-                in_fence = True
-            else:
-                in_fence = False
+            in_fence = not in_fence
 
 
     # Ensure blank lines before and after headings
@@ -221,13 +224,32 @@ def process_file(path, state=None):
                 problems.append({'file': path, 'line': i + 1, 'problem': 'missing blank line before list'})
                 fixed.append({'file': path, 'line': i + 1, 'fix': 'insert blank line before list'})
                 i += 1
-            # collect contiguous list block
+            # collect list block
+            # allow single-blank-line separation between list items (authors often
+            # put blank lines between items for readability) so treat such cases
+            # as a single logical list block for renumbering purposes.
             j = i
             items = []
-            while j < len(out) and out[j].strip() != '':
-                if list_item_re.match(out[j]):
-                    items.append((j, out[j]))
-                j += 1
+            while j < len(out):
+                line_j = out[j]
+                if list_item_re.match(line_j):
+                    items.append((j, line_j))
+                    j += 1
+                    continue
+                if line_j.strip() == '':
+                    # peek ahead to see if next non-empty line is a list item
+                    k = j + 1
+                    while k < len(out) and out[k].strip() == '':
+                        k += 1
+                    if k < len(out) and list_item_re.match(out[k]):
+                        # treat single blank as part of the list block and continue
+                        # advance j to the next list item (preserving blank lines)
+                        j = k
+                        continue
+                    else:
+                        break
+                # non-list, non-blank line ends the block
+                break
             # ensure blank after
             if j < len(out) and out[j].strip() != '':
                 out.insert(j, '')
@@ -288,15 +310,10 @@ def process_file(path, state=None):
                 newnum = prev_order + 1
             else:
                 newnum = 1
+            # Always auto-fix ordered list numbering to enforce sequential numbering
             if newnum != num:
-                problem_name = 'ordered list numbering'
-                action = state.get('policies', {}).get(problem_name, 'auto-fix')
-                if action == 'auto-fix':
-                    out[i] = f"{indent}{newnum}.{sep}{rest}"
-                    fixed.append({'file': path, 'line': i + 1, 'fix': f'renumber to {newnum}.'})
-                else:
-                    # still record the problem
-                    problems.append({'file': path, 'line': i + 1, 'problem': f'ordered list numbering expected {prev_order+1} but found {num}'})
+                out[i] = f"{indent}{newnum}.{sep}{rest}"
+                fixed.append({'file': path, 'line': i + 1, 'fix': f'renumber to {newnum}.'})
             prev_order = newnum
             prev_was_order = True
             blank_count = 0
@@ -306,16 +323,74 @@ def process_file(path, state=None):
             blank_count = 0
         i += 1
 
+    # Final pass: enforce markdownlint-style ordered-list numbering globally.
+    # This pass finds ordered-list blocks (allowing a single blank line between
+    # items) and renumbers them sequentially starting at 1. It skips fenced
+    # code blocks.
+    final_ordered_re = re.compile(r"^(?P<indent>\s*)(?P<num>\d+)\.(?P<sep>\s+)(?P<rest>.*)$")
+    i = 0
+    in_fence_local = False
+    fence_re_local = re.compile(r"^\s*```")
+    while i < len(out):
+        line = out[i]
+        if fence_re_local.match(line):
+            in_fence_local = not in_fence_local
+            i += 1
+            continue
+        if in_fence_local:
+            i += 1
+            continue
+        m = final_ordered_re.match(line)
+        if m:
+            # collect block allowing a single blank line between items
+            j = i
+            block_indices = []
+            while j < len(out):
+                if fence_re_local.match(out[j]):
+                    break
+                mm = final_ordered_re.match(out[j])
+                if mm:
+                    block_indices.append(j)
+                    j += 1
+                    continue
+                if out[j].strip() == '':
+                    # peek ahead one non-empty line; if it's an ordered item, allow it
+                    k = j + 1
+                    while k < len(out) and out[k].strip() == '':
+                        k += 1
+                    if k < len(out) and final_ordered_re.match(out[k]):
+                        # include the blank line but continue from the next item
+                        j = k
+                        continue
+                    else:
+                        break
+                break
+            # renumber the collected block sequentially
+            if block_indices:
+                counter = 1
+                for idx in block_indices:
+                    mm = final_ordered_re.match(out[idx])
+                    if not mm:
+                        continue
+                    indent = mm.group('indent')
+                    sep = mm.group('sep')
+                    rest = mm.group('rest')
+                    out[idx] = f"{indent}{counter}.{sep}{rest}"
+                    fixed.append({'file': path, 'line': idx + 1, 'fix': f'renumber to {counter}.'})
+                    counter += 1
+            i = j
+            continue
+        i += 1
     new_text = "\n".join(out) + "\n"
     if not had_trailing:
         problems.append({'file': path, 'line': len(out), 'problem': 'missing trailing newline'})
         fixed.append({'file': path, 'line': len(out), 'fix': 'append trailing newline'})
 
-    # add trigger comment marker to indicate file processed
-    marker = '<!-- md_autofix: processed -->'
-    if marker not in new_text:
-        new_text = new_text.rstrip('\n') + '\n\n' + marker + '\n'
-        fixed.append({'file': path, 'line': len(out) + 2, 'fix': 'append md_autofix trigger marker'})
+    # add trigger comment marker to indicate file processed (only for .md files)
+    if path.lower().endswith('.md'):
+        if marker_local not in new_text:
+            new_text = new_text.rstrip('\n') + '\n\n' + marker_local + '\n'
+            fixed.append({'file': path, 'line': len(out) + 2, 'fix': 'append md_autofix trigger marker'})
 
     if new_text != orig:
         try:
@@ -339,6 +414,7 @@ def main():
     parser.add_argument('paths', nargs='*', help='Files, dirs, or globs to process')
     parser.add_argument('--report-path', help='Write JSON report to this path')
     args = parser.parse_args()
+
 
     md_files = find_md_files(args.paths)
     all_detected = []
@@ -391,29 +467,33 @@ def main():
             sys.exit(2)
     print(text)
 
-    # Cleanup: remove md_autofix markers from workflow YAML files (they break actionlint)
-    marker = '<!-- md_autofix: processed -->'
-    workflow_dir = os.path.join('.', '.github', 'workflows')
-    if os.path.isdir(workflow_dir):
-        for root, dirs, files in os.walk(workflow_dir):
-            for f in files:
-                if not (f.endswith('.yml') or f.endswith('.yaml')):
+    # Cleanup: remove md_autofix markers from non-markdown files (they shouldn't exist there)
+    for root_dir, dirs, files in os.walk('.'):
+        # skip node_modules, .git, and .logs
+        dirs[:] = [d for d in dirs if d not in ('node_modules', '.git', '.logs')]
+        for fname in files:
+            fpath = os.path.join(root_dir, fname)
+            # only consider non-markdown files for cleanup
+            if fname.lower().endswith('.md'):
+                continue
+            try:
+                with open(fpath, 'rb') as fh:
+                    content = fh.read()
+                # skip binary files
+                if b'\0' in content:
                     continue
-                wfpath = os.path.join(root, f)
-                try:
-                    with open(wfpath, 'r', encoding='utf-8') as fh:
-                        lines = fh.readlines()
-                    new_lines = [ln for ln in lines if marker not in ln]
-                    if len(new_lines) != len(lines):
-                        with open(wfpath, 'w', encoding='utf-8') as fh:
-                            fh.writelines(new_lines)
-                        # record this change in the report file summary
-                        report_entry = {'file': wfpath, 'detected_problems': [], 'fixed': [{'file': wfpath, 'fix': 'remove md_autofix marker from workflow'}], 'unsolved': []}
-                        per_file.append(report_entry)
-                        report['per_file'] = per_file
-                        report['fix_counts']['remove md_autofix marker from workflow'] = report['fix_counts'].get('remove md_autofix marker from workflow', 0) + 1
-                except Exception:
-                    pass
+                text = content.decode('utf-8', errors='replace')
+                if marker_local in text:
+                    new_text = '\n'.join([ln for ln in text.splitlines() if marker_local not in ln]) + '\n'
+                    with open(fpath, 'w', encoding='utf-8') as fh:
+                        fh.write(new_text)
+                    report_entry = {'file': fpath, 'detected_problems': [], 'fixed': [{'file': fpath, 'fix': 'remove md_autofix marker from non-md file'}], 'unsolved': []}
+                    per_file.append(report_entry)
+                    report['per_file'] = per_file
+                    report['fix_counts']['remove md_autofix marker from non-md file'] = report['fix_counts'].get('remove md_autofix marker from non-md file', 0) + 1
+            except Exception:
+                # ignore files we cannot read/write
+                continue
 
     # update state-driven policies: if a problem repeats above threshold, enable auto-fix for it
     thresholds = state.get('thresholds', {})
