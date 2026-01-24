@@ -19,6 +19,7 @@ import argparse
 from pathlib import Path
  
 # Marker used to indicate files processed by md_autofix
+marker_local = '<!-- md_autofix: processed by tools/md_autofix.py -->'
  
 def find_md_files(paths):
     files = []
