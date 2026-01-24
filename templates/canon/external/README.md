@@ -18,7 +18,7 @@ Use the builder command (date defaults to the repo’s last git commit date):
 
 ```bash
 python3 .builder/builder.py external --slug <project-slug>
-```
+```text
 
 This creates:
 
@@ -38,3 +38,5 @@ The templates used are stored alongside this README:
 - **Web Scraping Best Practices**: [Robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro) - Respecting site policies when gathering external info.
 - **Fair Use**: [US Copyright Office](https://www.copyright.gov/fair-use/) - Understanding the legal boundaries of using external code for "inspiration".
 - **SPDX Licenses**: [License List](https://spdx.org/licenses/) - Standard identifiers for open source licenses.
+
+<!-- md_autofix: processed -->

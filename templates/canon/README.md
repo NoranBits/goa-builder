@@ -15,3 +15,5 @@ This folder is the canonical knowledge base generated/maintained by the GOA Buil
 
 - Runtime output logs (use `.logs/` and gitignore it).
 - Vendored upstream code (if any, it must be stored under a dedicated upstream area and gitignored).
+
+<!-- md_autofix: processed -->

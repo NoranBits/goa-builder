@@ -11,3 +11,5 @@ This gate applies to files under `.canon/roles/**`.
 ## Placeholders (adjust per repo)
 
 - Role review owner: `{{ROLES_OWNER}}`
+
+<!-- md_autofix: processed -->

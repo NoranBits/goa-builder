@@ -16,3 +16,5 @@ Keep the repo healthy: validations green, structure consistent, and guidance up 
 - Maintenance plan (smallest set of actions).
 - Validation report (what ran, what failed, what changed).
 - Follow-up tasks for backlog.
+
+<!-- md_autofix: processed -->

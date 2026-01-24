@@ -11,3 +11,5 @@
 - Single Markdown file per decision.
 - Must link to relevant tracking tickets/issues.
 - Committed to git.
+
+<!-- md_autofix: processed -->

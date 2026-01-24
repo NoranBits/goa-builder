@@ -20,3 +20,4 @@ This repository is managed by a **Repo-Agnostic Builder** (`.builder/`). It is n
 
 See [Legacy System Interop](./legacy-system-interop.md) for details on migrating from older systems.
 
+<!-- md_autofix: processed -->

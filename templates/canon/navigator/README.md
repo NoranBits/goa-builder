@@ -38,3 +38,5 @@ This reduces repeated discovery work and creates reliable “quicksteps” for f
 - **Abstract Syntax Trees (AST)**: [Explorer](https://astexplorer.net/) - Understanding how code structures are parsed.
 - **Language Server Protocol (LSP)**: [Specification](https://microsoft.github.io/language-server-protocol/) - How modern editors "understand" code navigation.
 - **Tags (ctags)**: [Universal Ctags](https://github.com/universal-ctags/ctags) - Classic definition of code indexing.
+
+<!-- md_autofix: processed -->

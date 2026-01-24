@@ -12,3 +12,5 @@ Reusable prompt templates for common workflows (scan, validate, integrate, etc.)
 ## Placeholders (adjust per repo)
 
 - Prompt style guide: `{{PROMPT_STYLE_GUIDE}}`
+
+<!-- md_autofix: processed -->

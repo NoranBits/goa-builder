@@ -33,3 +33,5 @@ Use `custom-tools/` for database migrations strategies.
 - **Renovate Bot**: [Docs](https://docs.renovatebot.com/) - Automated dependency updates.
 - **Dependabot**: [GitHub Docs](https://docs.github.com/en/code-security/dependabot) - Automated supply chain security.
 - **SemVer Cheatsheet**: [Npm Semver](https://docs.npmjs.com/about-semantic-versioning) - Understanding carat vs tilde ranges.
+
+<!-- md_autofix: processed -->

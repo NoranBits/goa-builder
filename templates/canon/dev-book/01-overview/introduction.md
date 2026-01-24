@@ -27,3 +27,5 @@ It is intentionally written to support:
 - `tech-stack.md`
 - `architecture.md`
 - `features.md`
+
+<!-- md_autofix: processed -->

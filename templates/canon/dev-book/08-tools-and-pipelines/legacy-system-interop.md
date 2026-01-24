@@ -22,22 +22,22 @@ A “legacy system” is anything that exists before the builder kit is introduc
    - List top-level folders and packages.
    - Identify entry points: executables, services, apps.
 
-2. **Build**
+1. **Build**
 
    - Find the build command(s) and their required environment.
    - Identify cache directories and generated outputs.
 
-3. **Test**
+1. **Test**
 
    - Find the smallest fast test suite.
    - Identify slow/integration suites and how to run them selectively.
 
-4. **Validation**
+1. **Validation**
 
    - Identify formatting and linting tools already enforced by CI.
    - Prefer reusing existing validators instead of replacing them.
 
-5. **Logging**
+1. **Logging**
 
    - Identify runtime log locations (local files, cloud services, structured logs).
    - Capture sample log lines and where they’re emitted.
@@ -61,3 +61,5 @@ Stop and request human input when:
 - Governance rules conflict.
 - The legacy system’s “source of truth” disagrees with the new scaffold.
 - A change would affect CI, release, or licensing.
+
+<!-- md_autofix: processed -->

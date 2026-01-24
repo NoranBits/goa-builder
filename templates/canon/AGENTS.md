@@ -50,3 +50,5 @@ When multiple `AGENTS.md` files exist, the **nearest** one is authoritative.
 
 - Owner team: `{{CANON_OWNER_TEAM}}`
 - Validation command/task: `{{CANON_VALIDATE_TASK}}`
+
+<!-- md_autofix: processed -->

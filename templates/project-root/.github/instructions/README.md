@@ -12,3 +12,5 @@ Scoped instructions that apply to specific path globs.
 ## Placeholders (adjust per repo)
 
 - Instruction owners: `{{INSTRUCTIONS_OWNER}}`
+
+<!-- md_autofix: processed -->

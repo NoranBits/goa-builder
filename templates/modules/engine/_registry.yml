@@ -1,0 +1,24 @@
+# Engine detection registry
+# Data-driven detection rules for engine activation.
+engines:
+  - id: unity
+    display_name: "Unity"
+    markers:
+      - path: "ProjectSettings/ProjectVersion.txt"
+      - path_glob: "**/*.unityproj"
+    notes: "Standard Unity project marker: ProjectSettings/ProjectVersion.txt"
+
+  - id: unreal
+    display_name: "Unreal"
+    markers:
+      - path_glob: "*.uproject"
+    notes: "Unreal project descriptor file (*.uproject)"
+
+  - id: godot
+    display_name: "Godot"
+    markers:
+      - path: "project.godot"
+    notes: "Godot project file at repo root"
+
+# Extend this registry with additional engines. The orchestrator should use these
+# rules to detect which engine (if any) should be activated in a target repo.

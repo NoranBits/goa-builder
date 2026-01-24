@@ -6,6 +6,7 @@ Define where different classes of knowledge and artifacts must live so agents ca
 
 Mapping
 -------
+
 - Semantic memory (authoritative truth) → `.canon/`
   - long-form specs, policies, schemas, runbooks, role definitions
 - Episodic memory (append-only history) → `.logs/`
@@ -14,6 +15,7 @@ Mapping
 
 Guidelines
 ----------
+
 - Writes to `.canon/` are controlled and must be accompanied by a decision record in `.logs/decisions/`.
 - `.logs/` is append-only: never rewrite existing entries; add new records instead.
 - `.github/agents/` (optional) is a Copilot-friendly projection of procedural roles; `.canon/roles/` remains the authoritative long-form source.
@@ -21,3 +23,5 @@ Guidelines
 Rationale
 ---------
 Separation reduces context-window waste, prevents instruction drift, and enables programmatic gating by making authoritative sources easy to locate and validate.
+
+<!-- md_autofix: processed -->

@@ -32,3 +32,5 @@ This dev-book is intentionally minimal at bootstrap time. It provides the **slot
 - **Docs as Code**: [Write the Docs](https://www.writethedocs.org/guide/docs-as-code/) - Treating documentation with the same rigor as source code.
 - **Google Style Guide**: [Developer Documentation](https://developers.google.com/style) - Standards for clarity and tone.
 - **Mermaid.js**: [Live Editor](https://mermaid.live/) - Tool for visualizing diagrams in markdown.
+
+<!-- md_autofix: processed -->

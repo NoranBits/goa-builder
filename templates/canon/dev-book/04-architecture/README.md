@@ -19,3 +19,5 @@ High-level system design and component interactions.
 - **C4 Model**: [Website](https://c4model.com/) - Hierarchical way to describe software architecture (Context, Containers, Components, Code).
 - **Architecture Decision Records (ADR)**: [ADR GitHub](https://adr.github.io/) - Methodology for capturing architectural decisions.
 - **UML Class Diagrams**: [Mermaid.js Examples](https://mermaid.js.org/syntax/classDiagram.html) - Visualizing object structure.
+
+<!-- md_autofix: processed -->

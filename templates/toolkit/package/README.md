@@ -33,3 +33,5 @@ Use `custom-tools/` for store-specific packagers (SteamPipe, AppStoreConnect).
 - **Docker Best Practices**: [Dockerfile Guide](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) - Containerization standards.
 - **Semantic Versioning**: [SemVer](https://semver.org/) - Versioning logic.
 - **CycloneDX**: [SBOM Standard](https://cyclonedx.org/) - Bill of materials specification.
+
+<!-- md_autofix: processed -->

@@ -12,3 +12,5 @@ This gate applies to files under `.logs/**`.
 
 - Timestamp format: `{{LOG_TIMESTAMP_FORMAT}}`
 - Actor IDs: `{{LOG_ACTOR_IDS}}`
+
+<!-- md_autofix: processed -->

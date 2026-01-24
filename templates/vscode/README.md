@@ -18,3 +18,5 @@ This folder contains editor configuration templates that the builder installs or
 
 - Primary validation tasks: `{{VSCODE_VALIDATE_TASKS}}`
 - Recommended extensions placeholder: `{{VSCODE_RECOMMENDED_EXTENSIONS}}`
+
+<!-- md_autofix: processed -->

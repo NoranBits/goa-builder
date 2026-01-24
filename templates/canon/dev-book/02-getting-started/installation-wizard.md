@@ -26,23 +26,23 @@ This is an interaction pattern, not an external dependency: the wizard can be fo
    - Identify languages and tooling (Node, Python, Rust, etc.).
    - Identify high-signal constraints (monorepo, game engine, asset pipeline).
 
-2. **Align**
+1. **Align**
 
    - Read the nearest `AGENTS.md` gate for any file you plan to edit.
    - Confirm what the repo treats as authoritative documentation.
    - Confirm what is considered “generated” vs “source-of-truth”.
 
-3. **Generate**
+1. **Generate**
 
    - Run `python3 .builder/builder.py generate`.
    - Confirm the created scaffolds: `.canon/**`, `.toolkit/**`.
 
-4. **Validate**
+1. **Validate**
 
    - Run `python3 .builder/builder.py validate-kit`.
    - Run `python3 .builder/builder.py validate`.
 
-5. **Adapt**
+1. **Adapt**
 
    - Add small, repo-specific notes to `.canon/**` (never guess).
    - Add new tools only under `.toolkit/**/custom-tools/` until proven.
@@ -57,3 +57,5 @@ This is an interaction pattern, not an external dependency: the wizard can be fo
 
 - If validation fails, fix the root cause instead of excluding failing files.
 - If a policy conflict exists (for example, docs vs `.canon`), stop and request human resolution.
+
+<!-- md_autofix: processed -->

@@ -19,3 +19,5 @@ This project uses the Standard Structure:
 
 1. **Setup**: Use/generate the `.canon/dev-book` for onboarding instructions.
 2. **Work**: Use/generate the `.github/instructions` to guide your contributions.
+
+<!-- md_autofix: processed -->

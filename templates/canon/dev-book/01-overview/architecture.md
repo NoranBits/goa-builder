@@ -33,3 +33,5 @@ Add diagrams when stable enough:
 List the best starting files/folders for understanding:
 
 - TODO
+
+<!-- md_autofix: processed -->

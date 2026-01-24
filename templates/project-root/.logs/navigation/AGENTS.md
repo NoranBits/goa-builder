@@ -10,3 +10,5 @@
 
 - Tracks user movement and map updates.
 - Committed to git.
+
+<!-- md_autofix: processed -->

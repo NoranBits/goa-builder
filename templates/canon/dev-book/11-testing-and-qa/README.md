@@ -18,3 +18,4 @@ The Builder (V3) attempts to discover standard scripts (like `test`) and inject 
 1. Tests pass before merge.
 2. No flaky tests allowed.
 
+<!-- md_autofix: processed -->

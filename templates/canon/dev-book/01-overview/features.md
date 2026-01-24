@@ -23,3 +23,5 @@ For each feature, capture:
 
 - Architecture: `architecture.md`
 - Tech stack: `tech-stack.md`
+
+<!-- md_autofix: processed -->

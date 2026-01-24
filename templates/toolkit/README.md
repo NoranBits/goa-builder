@@ -55,3 +55,5 @@ Good composites:
 - **GNU Make**: [Manual](https://www.gnu.org/software/make/manual/make.html) - Standard build tool concepts (targets, prerequisites).
 - **ShellCheck**: [Gallery of Bad Code](https://github.com/koalaman/shellcheck/wiki/Gallery-of-bad-code) - Common pitfalls in shell scripting.
 - **Click (Python)**: [Documentation](https://click.palletsprojects.com/) - Building composable command line interfaces.
+
+<!-- md_autofix: processed -->

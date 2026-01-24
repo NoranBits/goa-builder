@@ -15,3 +15,5 @@ The dev-book is the canonical, curated knowledge base.
 ## Placeholders (adjust per repo)
 
 - Dev-book owner: `{{DEV_BOOK_OWNER}}`
+
+<!-- md_autofix: processed -->

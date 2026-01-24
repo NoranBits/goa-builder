@@ -11,3 +11,5 @@
 - Format: `YYYY/MM/DD/HHMMSSZ_<actor>_<action>.md`
 - Must update `INDEX.md`
 - Committed to git.
+
+<!-- md_autofix: processed -->

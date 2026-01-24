@@ -37,3 +37,5 @@
 - Proposed approach: `{{INTEGRATION_APPROACH}}`
 - Files/modules likely impacted: `{{TARGETS}}`
 - Validation to run: `{{VALIDATION_TASKS}}`
+
+<!-- md_autofix: processed -->

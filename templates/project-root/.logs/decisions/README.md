@@ -2,3 +2,5 @@
 
 Record decision cards and ADR-style decisions here.
 Status: **Permanent/Committed**
+
+<!-- md_autofix: processed -->

@@ -21,3 +21,5 @@ This folder contains repo automation and AI-facing configuration.
 - Agent profile limit: `{{AGENT_PROFILE_LIMIT}}`
 - Chatmode limit: `{{CHATMODE_LIMIT}}`
 - Validation entry point: `{{VALIDATE_ENTRYPOINT}}`
+
+<!-- md_autofix: processed -->

@@ -33,3 +33,5 @@ Use `custom-tools/` for bespoke parsers (e.g., parsing a specific game engine's 
 - **JSON Lines**: [Format](https://jsonlines.org/) - Standard for structured logging.
 - **ELK Stack**: [Elastic](https://www.elastic.co/what-is/elk-stack) - Concepts of log aggregation.
 - **OpenTelemetry**: [Concepts](https://opentelemetry.io/docs/concepts/) - Modern observability standards.
+
+<!-- md_autofix: processed -->

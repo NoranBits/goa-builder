@@ -18,3 +18,5 @@ This gate applies to files under `.toolkit/**`.
 
 - Tool owners: `{{TOOLKIT_OWNERS}}`
 - Log directory: `{{TOOLKIT_LOG_DIR}}`
+
+<!-- md_autofix: processed -->

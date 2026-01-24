@@ -11,3 +11,5 @@ This gate applies to files under `.vscode/**`.
 ## Placeholders (adjust per repo)
 
 - Required tasks: `{{REQUIRED_TASK_LABELS}}`
+
+<!-- md_autofix: processed -->

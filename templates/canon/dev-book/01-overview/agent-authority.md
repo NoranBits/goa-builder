@@ -43,7 +43,7 @@ Use this as a reference layout. Do not copy blindly; adapt to repo needs.
   prompts/
     scan_repo.prompt.md
     validate_all.prompt.md
-```
+```text
 
 ## `.cursor/` structure (sample)
 
@@ -53,10 +53,12 @@ Use this as a reference layout. Do not copy blindly; adapt to repo needs.
     project.mdc
     markdown.mdc
     safety.mdc
-```
+```text
 
 ## Minimal checklist for new subtrees
 
 1. Add a subtree `AGENTS.md` if the area has unique risks.
 2. Ensure validation is runnable.
 3. Ensure changes are logged (append-only).
+
+<!-- md_autofix: processed -->

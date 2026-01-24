@@ -46,6 +46,7 @@ Every scan run must create an append-only log in:
 `.logs/navigation/YYYY-MM-DD__scan__navigator.md`
 
 Minimum required fields:
+
 - `generated_at` (ISO 8601 UTC)
 - `invocation` (command + args)
 - `scope` (paths, depth, exclusions)
@@ -55,6 +56,7 @@ Minimum required fields:
 Rule 5 — Hard stop conditions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Stop work and escalate (do not guess) if:
+
 - required entrypoints cannot be found in `.canon/navigator/`
 - the task requires scanning outside allowed tools
 - conflicting policies are detected
@@ -64,3 +66,5 @@ Enforcement
 Agents and humans must record navigation decisions in `.logs/navigation/`. Governance tools (Governance Sentinel) may block progress until missing artifacts or logs are produced.
 
 See also: `.canon/policies/POLICY__quality-gates__v1.md` and `.canon/policies/POLICY__design-principles__v1.md`.
+
+<!-- md_autofix: processed -->

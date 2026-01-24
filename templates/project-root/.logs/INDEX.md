@@ -10,3 +10,5 @@
 - `decisions/`: append-only decision records
 - `ingestion/`: append-only ingestion records
 - `navigation/`: append-only navigation session logs
+
+<!-- md_autofix: processed -->

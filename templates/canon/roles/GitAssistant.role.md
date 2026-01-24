@@ -16,3 +16,5 @@ Accelerate clean version-control workflow while keeping changes reviewable.
 - Suggested commit message(s).
 - Suggested file groups to commit together.
 - Quick review checklist for the PR.
+
+<!-- md_autofix: processed -->
