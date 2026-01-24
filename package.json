@@ -7,10 +7,24 @@
     "type": "git",
     "url": "https://github.com/NoranBits/goa-builder.git"
   },
-  "keywords": ["goa","builder","agents","game","automation","templates"],
+  "keywords": [
+    "goa",
+    "builder",
+    "agents",
+    "game",
+    "automation",
+    "templates"
+  ],
   "author": "NoranBits",
-  "files": ["templates","README.md","LICENSE"],
+  "files": [
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "validate-md": "npx markdownlint-cli2 \"templates/**/*.md\" || true"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.20.0"
   }
 }

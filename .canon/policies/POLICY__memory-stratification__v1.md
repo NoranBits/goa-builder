@@ -2,6 +2,7 @@
 
 Purpose
 -------
+
 Define where different classes of knowledge and artifacts must live so agents can find authoritative sources without scanning indiscriminately.
 
 Mapping
@@ -22,6 +23,7 @@ Guidelines
 
 Rationale
 ---------
+
 Separation reduces context-window waste, prevents instruction drift, and enables programmatic gating by making authoritative sources easy to locate and validate.
 
 <!-- md_autofix: processed -->
