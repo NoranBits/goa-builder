@@ -29,7 +29,7 @@ Folder summary not yet curated. Add notes as you learn.
 templates/canon/dev-book/02-getting-started
   README.md
   installation-wizard.md
-```
+```text
 
 ### Subfolders
 
@@ -48,3 +48,5 @@ templates/canon/dev-book/02-getting-started
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

@@ -38,3 +38,5 @@ Role files are guidance, but `AGENTS.md` is the operational gate.
 - **RACI Matrix**: [Wiki Definition](https://en.wikipedia.org/wiki/RACI_matrix) - Responsible, Accountable, Consulted, Informed model for role clarity.
 - **Autonomous Agents**: [Lilian Weng's Blog](https://lilianweng.github.io/posts/2023-06-23-agent/) - Deep dive into LLM-powered autonomous agent systems.
 - **Role-Based Access Control (RBAC)**: [NIST Definition](https://csrc.nist.gov/glossary/term/role_based_access_control) - Concept of permissions tied to roles.
+
+<!-- md_autofix: processed -->

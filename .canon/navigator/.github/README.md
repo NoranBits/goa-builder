@@ -34,7 +34,7 @@ Repository automation (CI, agents, prompts, instructions).
   workflows/
   README.md
   copilot-instructions.md
-```
+```text
 
 ### Subfolders
 
@@ -57,3 +57,5 @@ Repository automation (CI, agents, prompts, instructions).
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

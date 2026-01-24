@@ -28,7 +28,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/toolkit/scan
   README.md
-```
+```text
 
 ### Subfolders
 
@@ -46,3 +46,5 @@ templates/toolkit/scan
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

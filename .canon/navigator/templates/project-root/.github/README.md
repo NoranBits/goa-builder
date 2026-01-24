@@ -31,7 +31,7 @@ templates/project-root/.github
   instructions/
   prompts/
   README.md
-```
+```text
 
 ### Subfolders
 
@@ -51,3 +51,5 @@ templates/project-root/.github
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

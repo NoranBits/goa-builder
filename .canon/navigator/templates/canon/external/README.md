@@ -30,7 +30,7 @@ templates/canon/external
   README.md
   external_source.template.md
   linktree.template.md
-```
+```text
 
 ### Subfolders
 
@@ -50,3 +50,5 @@ templates/canon/external
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

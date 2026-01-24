@@ -22,3 +22,5 @@ This repository should use a deterministic setup wizard or script.
 - Verify environment variables in `.env`.
 - Ensure all dependencies are installed correctly.
 - Consult the `AGENTS.md` for governance and policy details.
+
+<!-- md_autofix: processed -->

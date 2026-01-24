@@ -28,7 +28,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/canon/dev-book/13-security-and-safety
   README.md
-```
+```text
 
 ### Subfolders
 
@@ -46,3 +46,5 @@ templates/canon/dev-book/13-security-and-safety
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

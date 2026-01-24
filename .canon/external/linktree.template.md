@@ -21,3 +21,5 @@ A curated map of the upstream project.
 
 - What to look at first: `{{QUICK_START_PATHS}}`
 - What to avoid copying directly: `{{AVOID_COPY}}`
+
+<!-- md_autofix: processed -->

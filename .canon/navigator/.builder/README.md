@@ -25,7 +25,7 @@ Repo-agnostic builder kit (generation + validation).
 .builder
   package/
   builder.py
-```
+```text
 
 ### Subfolders
 
@@ -43,3 +43,5 @@ Repo-agnostic builder kit (generation + validation).
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

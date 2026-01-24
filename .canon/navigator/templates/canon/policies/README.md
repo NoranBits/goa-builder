@@ -26,7 +26,7 @@ templates/canon/policies
   POLICY__dedicated-navigation-path__v1.md
   POLICY__machine-readable-outputs__v1.md
   POLICY__memory-stratification__v1.md
-```
+```text
 
 ### Subfolders
 
@@ -46,3 +46,5 @@ templates/canon/policies
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

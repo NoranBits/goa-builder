@@ -15,3 +15,5 @@ Coordinate the multi-step build/generation process and enforce gates.
 - A step-by-step plan.
 - A deterministic set of generated artifacts.
 - A validation report.
+
+<!-- md_autofix: processed -->

@@ -58,3 +58,5 @@ Trigger examples:
 
 - SARIF: `.logs/test/YYYY-MM-DD__code-audit__results.sarif`
 - Human summary: `.logs/test/YYYY-MM-DD__code-audit__summary.md`
+
+<!-- md_autofix: processed -->

@@ -39,7 +39,7 @@ templates/canon
   toolkit/
   AGENTS.md
   README.md
-```
+```text
 
 ### Subfolders
 
@@ -65,3 +65,5 @@ templates/canon
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

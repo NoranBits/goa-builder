@@ -38,7 +38,7 @@ docs
   general_role_profile__senior_prompt_engineer.txt
   relevent_from_task_00_og_context.txt
   relevent_from_task_01_relevent_external_sources.txt
-```
+```text
 
 ### Subfolders
 
@@ -65,3 +65,5 @@ docs
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

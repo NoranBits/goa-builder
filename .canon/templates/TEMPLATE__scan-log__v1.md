@@ -1,4 +1,5 @@
 <!-- Navigation / Scan Log template (TEMPLATE__scan-log__v1.md) -->
+
 # Navigation Scan Log — Template v1
 
 Generated At: {{generated_at}}
@@ -42,9 +43,12 @@ Example JSON payload:
     }
   ]
 }
-```
+```text
 
 Notes:
+
 - Keep entries short and link to the source file/path.
 - Use `severity: error` for policy-blocking issues that should fail CI.
 - This template is intended to be both human-readable and easily converted to JSON for schema validation.
+
+<!-- md_autofix: processed -->

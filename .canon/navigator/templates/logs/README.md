@@ -24,7 +24,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 templates/logs
   SUMMARY_TEMPLATE.md
-```
+```text
 
 ### Subfolders
 
@@ -42,3 +42,5 @@ templates/logs
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

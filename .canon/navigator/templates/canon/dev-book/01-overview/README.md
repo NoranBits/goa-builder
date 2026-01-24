@@ -33,7 +33,7 @@ templates/canon/dev-book/01-overview
   features.md
   introduction.md
   tech-stack.md
-```
+```text
 
 ### Subfolders
 
@@ -56,3 +56,5 @@ templates/canon/dev-book/01-overview
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

@@ -47,3 +47,5 @@ Subtree gates should:
 - Prefer read-only behavior unless a write mode is explicit.
 - Never write outside the repo root.
 - Avoid large blast-radius edits.
+
+<!-- md_autofix: processed -->

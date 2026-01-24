@@ -28,7 +28,7 @@ templates
   project-root/
   toolkit/
   vscode/
-```
+```text
 
 ### Subfolders
 
@@ -50,3 +50,5 @@ templates
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

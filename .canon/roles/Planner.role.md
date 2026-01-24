@@ -9,3 +9,5 @@ Turn repository facts into an ordered plan and questionnaire.
 - Produce a step-by-step execution plan.
 - Identify missing decisions and ask short, high-signal questions.
 - Keep plan conflict-averse: prefer validation failure over heuristics.
+
+<!-- md_autofix: processed -->

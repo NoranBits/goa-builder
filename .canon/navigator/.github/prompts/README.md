@@ -33,7 +33,7 @@ Folder summary not yet curated. Add notes as you learn.
   planning.prompt.md
   refactor.prompt.md
   validate.prompt.md
-```
+```text
 
 ### Subfolders
 
@@ -56,3 +56,5 @@ Folder summary not yet curated. Add notes as you learn.
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

@@ -9,3 +9,5 @@ Collect facts about the target repository and summarize them deterministically.
 - Inventory manifests, languages, CI, and existing tooling.
 - Identify existing markdownlint setup or conflicts.
 - Produce a factual summary suitable for `.canon/`.
+
+<!-- md_autofix: processed -->

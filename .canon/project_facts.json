@@ -1,4 +1,21 @@
 {
+  "detected_markers": [
+    {
+      "type": "node_package",
+      "path": "package.json"
+    },
+    {
+      "type": "python_tools_dir",
+      "path": "tools/",
+      "note": "Contains helper scripts (run_markdownlint.py, validate_kit.py, etc.)"
+    }
+  ],
+  "inferred_stack": ["node", "python"],
+  "project_type": "agent-builder / templates / tooling",
+  "generated_by": "cognitive-repo-subagent",
+  "generated_at": "2026-01-24T00:00:00Z"
+}
+{
   "project": "goa-builder",
   "detected_stacks": [
     { "name": "nodejs", "evidence": ["package.json"], "confidence": 0.9 },

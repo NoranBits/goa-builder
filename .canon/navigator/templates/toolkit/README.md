@@ -39,7 +39,7 @@ templates/toolkit
   validate/
   AGENTS.md
   README.md
-```
+```text
 
 ### Subfolders
 
@@ -65,3 +65,5 @@ templates/toolkit
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

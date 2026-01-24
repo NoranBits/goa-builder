@@ -11,3 +11,5 @@ This gate applies to files under `.canon/navigator/**`.
 ## Placeholders (adjust per repo)
 
 - Navigator regeneration command: `{{NAV_REGEN_COMMAND}}`
+
+<!-- md_autofix: processed -->

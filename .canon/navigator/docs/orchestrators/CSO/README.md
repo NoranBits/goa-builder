@@ -25,7 +25,7 @@ Folder summary not yet curated. Add notes as you learn.
 docs/orchestrators/CSO
   contextual-systems-orchestrator.instruction.md
   ocs-knowledge-base.txt
-```
+```text
 
 ### Subfolders
 
@@ -44,3 +44,5 @@ docs/orchestrators/CSO
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

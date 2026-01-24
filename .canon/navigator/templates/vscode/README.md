@@ -33,7 +33,7 @@ templates/vscode
   README.md
   extensions.json
   tasks.json
-```
+```text
 
 ### Subfolders
 
@@ -54,3 +54,5 @@ templates/vscode
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

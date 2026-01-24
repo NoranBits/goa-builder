@@ -24,7 +24,7 @@ Folder summary not yet curated. Add notes as you learn.
 ```text
 .builder/package
   archives/
-```
+```text
 
 ### Subfolders
 
@@ -42,3 +42,5 @@ Folder summary not yet curated. Add notes as you learn.
 ## Next steps
 
 - Add 3 to 5 bullets explaining key entry points and common workflows.
+
+<!-- md_autofix: processed -->

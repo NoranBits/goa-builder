@@ -11,5 +11,7 @@ Data model, persistence, and schema migration strategy.
 - **Object Storage**: S3/Blob storage for large assets.
 
 ## Migration Strategy (Placeholder)
+
 - Describe how schema changes are applied (e.g., Rails migrations, Alembic, Drizzle Kit).
 
+<!-- md_autofix: processed -->
