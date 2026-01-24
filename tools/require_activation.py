@@ -2,6 +2,7 @@
 """Require explicit activation before running non-repo-agnostic Builder actions.
 
 Checks for either:
+
 - repository root file: .builder/ALLOW_AUTOINVOKE
 - environment variable: GOA_BUILDER_ACTIVATE=1
 
@@ -41,3 +42,5 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+<!-- md_autofix: processed -->

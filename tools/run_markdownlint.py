@@ -85,6 +85,7 @@ def ensure_generated_scaffold(root: Path) -> None:
     if missing:
         fail(
             "Missing generated scaffold: "
+
             + ", ".join(missing)
             + ". Run `python3 .builder/builder.py generate`."
         )
@@ -172,3 +173,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+<!-- md_autofix: processed -->

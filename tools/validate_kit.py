@@ -90,11 +90,11 @@ def validate_kit(kit: Path) -> list[Problem]:
     # current builder templates. Keep checks conservative to reduce
     # noise while still enforcing the key governance and tooling artifacts.
     required_files = [
-        "templates/canon/AGENTS.md",
-        "templates/canon/README.md",
-        "builder.py",
-        "package.json",
-        "tools/validate_kit.py",
+           "templates/canon/AGENTS.md",
+           "templates/canon/README.md",
+           "builder.py",
+           "package.json",
+           "tools/validate_kit.py",
     ]
 
     required_dirs = [
@@ -113,14 +113,14 @@ def validate_kit(kit: Path) -> list[Problem]:
         _require_dir(kit / rel, rel, problems)
 
     # Ensure a navigator script exists either in templates or in the repo toolkit
-    nav_template = kit / "templates/toolkit/scan/refresh_navigator.sh"
-    nav_toolkit = kit / ".toolkit/scan/refresh_navigator.sh"
-    if not nav_template.exists() and not nav_toolkit.exists():
-        problems.append(
-            Problem(
-                "Missing required navigator script: templates/toolkit/scan/refresh_navigator.sh or .toolkit/scan/refresh_navigator.sh"
+        nav_template = kit / "templates/toolkit/scan/refresh_navigator.sh"
+        nav_toolkit = kit / ".toolkit/scan/refresh_navigator.sh"
+        if not nav_template.exists() and not nav_toolkit.exists():
+            problems.append(
+                Problem(
+                    "Missing required navigator script: templates/toolkit/scan/refresh_navigator.sh or .toolkit/scan/refresh_navigator.sh"
+                )
             )
-        )
 
     _validate_tasks_template(kit, problems)
 
@@ -143,3 +143,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+<!-- md_autofix: processed -->
