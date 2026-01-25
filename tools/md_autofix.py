@@ -140,16 +140,26 @@ def renumber_ordered_blocks(out, path, fixed):
                     block_indices.append(j)
                     j += 1
                     continue
-                if out[j].strip() == "":
-                    # peek ahead to see whether next non-empty line is ordered
+                # blank line: peek ahead for next ordered item
+                if out[j].strip() == '':
                     k = j + 1
-                    while k < len(out) and out[k].strip() == "":
+                    while k < len(out) and out[k].strip() == '':
                         k += 1
                     if k < len(out) and ordered_re.match(out[k]):
+                        # include intervening blanks and continue at next ordered item
                         j = k
                         continue
                     else:
                         break
+                # non-empty, non-ordered line: treat as nested content if indented
+                # relative to the first item's indent; otherwise this ends the block
+                first_indent = m.group('indent')
+                cur_lead = len(out[j]) - len(out[j].lstrip(' '))
+                if cur_lead > len(first_indent):
+                    # nested content belonging to the current list item
+                    j += 1
+                    continue
+                # otherwise, we've reached a non-nested, non-ordered line -> end block
                 break
             # renumber collected block sequentially starting at 1
             counter = 1

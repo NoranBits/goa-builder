@@ -22,22 +22,22 @@ A “legacy system” is anything that exists before the builder kit is introduc
    - List top-level folders and packages.
    - Identify entry points: executables, services, apps.
 
-1. **Build**
+2. **Build**
 
    - Find the build command(s) and their required environment.
    - Identify cache directories and generated outputs.
 
-1. **Test**
+3. **Test**
 
    - Find the smallest fast test suite.
    - Identify slow/integration suites and how to run them selectively.
 
-1. **Validation**
+4. **Validation**
 
    - Identify formatting and linting tools already enforced by CI.
    - Prefer reusing existing validators instead of replacing them.
 
-1. **Logging**
+5. **Logging**
 
    - Identify runtime log locations (local files, cloud services, structured logs).
    - Capture sample log lines and where they’re emitted.

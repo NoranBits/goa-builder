@@ -1,0 +1,83 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "GOA Rolekit Manifest Schema v3.1"
+description: "Defines the structure of a Rolekit manifest for GOA Builder v3.1 (machine-readable agent role)."
+type: object
+required:
+  - apiVersion
+  - kind
+  - metadata
+  - spec
+  - provenance
+properties:
+  apiVersion:
+    type: string
+    pattern: "^goa\\.v[0-9]+(?:\\.[0-9]+)*$"
+    description: "API version of the Rolekit manifest."
+  kind:
+    type: string
+    enum: ["AgentRole"]
+  metadata:
+    type: object
+    required: ["name","version","domain","level"]
+    properties:
+      name:
+        type: string
+        pattern: "^[a-z0-9_]+$"
+        description: "Canonical role id (snake_case, lowercase)."
+      version:
+        type: string
+        pattern: "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+)?$"
+      domain:
+        type: string
+      level:
+        type: string
+        enum: ["L0","L1","L2"]
+      summary:
+        type: string
+  spec:
+    type: object
+    required: ["profile","skills","runtime"]
+    properties:
+      profile:
+        type: object
+        properties:
+          description: { type: string }
+          avatar: { type: string }
+      skills:
+        type: array
+        items:
+          type: object
+          required: ["id","description"]
+          properties:
+            id: { type: string }
+            description: { type: string }
+            params: { type: object }
+      runtime:
+        type: object
+        required: ["framework","config_path"]
+        properties:
+          framework:
+            type: string
+            enum: ["LangGraph","AutoGen","Custom"]
+          config_path: { type: string }
+  canon_refs:
+    type: array
+    items: { type: string }
+    description: "Paths to related .canon/ playbooks or specs (relative)."
+  logs_policy:
+    type: object
+    properties:
+      write_path: { type: string }
+      append_only: { type: boolean }
+  tool_usage:
+    type: array
+    items: { type: string }
+  provenance:
+    type: object
+    required: ["builder","commit","timestamp"]
+    properties:
+      builder: { type: string }
+      commit: { type: string }
+      timestamp: { type: string }
+      notes: { type: string }
+additionalProperties: false

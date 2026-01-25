@@ -1,0 +1,28 @@
+apiVersion: goa.v3.1
+kind: AgentRole
+metadata:
+  name: senior_prompt_engineer
+  version: 1.0.0
+  domain: tooling.prompting
+  level: L2
+  summary: "Review and approve prompt templates; ensure injection resistance and safety."
+spec:
+  profile:
+    description: "Senior Prompt Engineer for repository-level prompt governance."
+  skills:
+    - id: prompting.review
+      description: "Review prompt templates for safety and clarity."
+  runtime:
+    framework: Custom
+    config_path: ".canon/roles/Senior_Prompt_Engineer.role.md"
+canon_refs:
+  - .github/roles/Senior_Prompt_Engineer.role.md
+logs_policy:
+  write_path: .logs/validation/
+  append_only: true
+tool_usage: []
+provenance:
+  builder: local-dev
+  commit: ""
+  timestamp: ""
+  notes: "example agnostic pack reference"
