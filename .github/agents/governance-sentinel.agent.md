@@ -6,6 +6,7 @@ Responsibilities
 
 - Run policy checks as part of CI, block merges for violations, and notify stakeholders.
 - Maintain a small set of high-confidence policies (navigation, licensing, secret scanning references).
+ - Validate presence and basic shape of `.canon/project_facts.json` and rolekit manifests via `tools/validate_rolekit.py` during pre-merge checks.
 
 Authority and boundaries
 

@@ -8,3 +8,5 @@
 - [ ] License field present in manifest if external code/examples are referenced
 
 Add reviewer note: if this PR includes `--fix` changes, prefer creating a follow-up PR that contains only the auto-fixed manifests and a link to the validation run.
+
+<!-- md_autofix: processed -->

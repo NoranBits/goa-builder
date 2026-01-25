@@ -4,7 +4,7 @@ import jsonschema
 
 
 def test_schema_and_sample_exist():
-    root = pathlib.Path(__file__).resolve().parents[3]
+    root = pathlib.Path(__file__).resolve().parents[4]
     schema = root / "templates/canon/rolekit/manifest.schema.yml"
     sample = root / "templates/canon/rolekit/examples/sample_manifest.yml"
     assert schema.exists(), "Schema file missing"

@@ -1,83 +1,202 @@
-$schema: "http://json-schema.org/draft-07/schema#"
-title: "GOA Rolekit Manifest Schema v3.1"
-description: "Defines the structure of a Rolekit manifest for GOA Builder v3.1 (machine-readable agent role)."
-type: object
-required:
-  - apiVersion
-  - kind
-  - metadata
-  - spec
-  - provenance
-properties:
-  apiVersion:
-    type: string
-    pattern: "^goa\\.v[0-9]+(?:\\.[0-9]+)*$"
-    description: "API version of the Rolekit manifest."
-  kind:
-    type: string
-    enum: ["AgentRole"]
-  metadata:
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "GOA Rolekit Manifest Schema"
+description: |
+  JSON Schema (expressed in YAML) that accepts either the older `manifest_version`+
+  `roles` bundle or the more structured `apiVersion`/`kind`/`metadata`/`spec`
+  style. Use `oneOf` to allow both shapes while keeping strict validation per-shape.
+oneOf:
+  - $comment: "Roles Bundle Manifest"
     type: object
-    required: ["name","version","domain","level"]
+    title: "Roles Bundle Manifest"
+    required: [manifest_version, roles]
     properties:
-      name:
+      manifest_version:
         type: string
-        pattern: "^[a-z0-9_]+$"
-        description: "Canonical role id (snake_case, lowercase)."
-      version:
-        type: string
-        pattern: "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+)?$"
-      domain:
-        type: string
-      level:
-        type: string
-        enum: ["L0","L1","L2"]
-      summary:
-        type: string
-  spec:
-    type: object
-    required: ["profile","skills","runtime"]
-    properties:
-      profile:
-        type: object
-        properties:
-          description: { type: string }
-          avatar: { type: string }
-      skills:
+        description: Semantic manifest version identifier
+        examples: ["v1", "v3.1"]
+      roles:
         type: array
+        description: List of role definitions
         items:
           type: object
-          required: ["id","description"]
+          required: [role_name, description, level, engine, version, capabilities]
           properties:
-            id: { type: string }
-            description: { type: string }
-            params: { type: object }
-      runtime:
+            role_name:
+              type: string
+              description: Short, unique role name (snake_case preferred)
+              example: "contextual_systems_orchestrator"
+            title:
+              type: string
+              description: Human-friendly title
+              example: "Contextual Systems Orchestrator"
+            description:
+              type: string
+              description: One-paragraph role purpose
+            level:
+              type: string
+              description: Role authority/abstraction level (L0..L3)
+              pattern: "^L[0-3]$"
+              examples: ["L0","L1","L2"]
+            engine:
+              type: string
+              description: Preferred/required engine or engine-agnostic marker
+              example: "engine-agnostic"
+            version:
+              type: string
+              description: Role definition version
+              example: "v3.1"
+            capabilities:
+              type: array
+              description: Capability entries that the role provides
+              items:
+                type: object
+                required: [name, description]
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  tools:
+                    type: array
+                    items:
+                      type: string
+                    description: Optional list of tools the capability may call
+            canon_refs:
+              type: array
+              description: References to canonical semantic memory documents
+              items:
+                anyOf:
+                  - type: string
+                  - type: object
+                    properties:
+                      path:
+                        type: string
+                      purpose:
+                        type: string
+                    required: [path]
+              examples: [".canon/roles/contextual_systems_orchestrator.md"]
+            logs_policy:
+              type: object
+              description: Logging/read policy for the role
+              properties:
+                must_log:
+                  type: boolean
+                log_paths:
+                  type: array
+                  items:
+                    type: string
+                retention_days:
+                  type: integer
+                  minimum: 0
+            tool_usage:
+              type: array
+              description: Declared allowed tools and constraints
+              items:
+                type: object
+                properties:
+                  tool_name:
+                    type: string
+                  allowed:
+                    type: boolean
+                    default: true
+                  reason:
+                    type: string
+            output_contracts:
+              type: array
+              description: JSON Schema $id or short descriptors of outputs produced
+              items:
+                type: string
+            provenance:
+              type: object
+              description: Source and authorship metadata
+              properties:
+                created_by:
+                  type: string
+                created_at:
+                  type: string
+                  format: date-time
+                source:
+                  type: string
+                notes:
+                  type: string
+          additionalProperties: false
+    additionalProperties: false
+
+  - $comment: "AgentRole Structured Manifest"
+    type: object
+    title: "AgentRole Structured Manifest"
+    required: [apiVersion, kind, metadata, spec, provenance]
+    properties:
+      apiVersion:
+        type: string
+        pattern: "^goa\\.v[0-9]+(?:\\.[0-9]+)*$"
+        description: "API version of the Rolekit manifest."
+      kind:
+        type: string
+        enum: ["AgentRole"]
+      metadata:
         type: object
-        required: ["framework","config_path"]
+        required: ["name","version","domain","level"]
         properties:
-          framework:
+          name:
             type: string
-            enum: ["LangGraph","AutoGen","Custom"]
-          config_path: { type: string }
-  canon_refs:
-    type: array
-    items: { type: string }
-    description: "Paths to related .canon/ playbooks or specs (relative)."
-  logs_policy:
-    type: object
-    properties:
-      write_path: { type: string }
-      append_only: { type: boolean }
-  tool_usage:
-    type: array
-    items: { type: string }
-  provenance:
-    type: object
-    required: ["builder","commit","timestamp"]
-    properties:
-      builder: { type: string }
-      commit: { type: string }
-      timestamp: { type: string }
-      notes: { type: string }
-additionalProperties: false
+            pattern: "^[a-z0-9_]+$"
+            description: "Canonical role id (snake_case, lowercase)."
+          version:
+            type: string
+            pattern: "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+)?$"
+          domain:
+            type: string
+          level:
+            type: string
+            enum: ["L0","L1","L2"]
+          summary:
+            type: string
+      spec:
+        type: object
+        required: ["profile","skills","runtime"]
+        properties:
+          profile:
+            type: object
+            properties:
+              description: { type: string }
+              avatar: { type: string }
+          skills:
+            type: array
+            items:
+              type: object
+              required: ["id","description"]
+              properties:
+                id: { type: string }
+                description: { type: string }
+                params: { type: object }
+          runtime:
+            type: object
+            required: ["framework","config_path"]
+            properties:
+              framework:
+                type: string
+                enum: ["LangGraph","AutoGen","Custom"]
+              config_path: { type: string }
+      canon_refs:
+        type: array
+        items: { type: string }
+        description: "Paths to related .canon/ playbooks or specs (relative)."
+      logs_policy:
+        type: object
+        properties:
+          write_path: { type: string }
+          append_only: { type: boolean }
+      tool_usage:
+        type: array
+        items: { type: string }
+      provenance:
+        type: object
+        required: ["builder","commit","timestamp"]
+        properties:
+          builder: { type: string }
+          commit: { type: string }
+          timestamp: { type: string }
+          notes: { type: string }
+    additionalProperties: false
+

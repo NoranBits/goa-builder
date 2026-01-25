@@ -1,0 +1,37 @@
+manifest_version: "v1"
+roles:
+  - role_name: contextual_systems_orchestrator
+    title: "Contextual Systems Orchestrator"
+    description: >-
+      Coordinates multi-agent activities, maintains shared context, and enforces
+      cognitive substrate rules (semantic memory, logs, and tool policies).
+    level: L0
+    engine: engine-agnostic
+    version: v3.1
+    capabilities:
+      - name: plan_and_orchestrate
+        description: "Generate execution plans, assign tasks to agents, and monitor progress"
+        tools: ["run_task", "mcp_gitkraken_pull_request_create_review"]
+      - name: context_assembly
+        description: "Assemble .canon and .logs fragments into a compact working set"
+    canon_refs:
+      - path: ".canon/README.md"
+        purpose: "project-level semantic memory and policies"
+      - ".canon/navigator/ENTRYPOINTS.md"
+    logs_policy:
+      must_log: true
+      log_paths: [".logs/navigation/", ".logs/decisions/"]
+      retention_days: 365
+    tool_usage:
+      - tool_name: run_markdownlint.py
+        allowed: true
+        reason: "used to validate markdown policies and docs"
+      - tool_name: postgres_migration_tool
+        allowed: false
+        reason: "not applicable to orchestrator duties"
+    output_contracts:
+      - "https://example.org/schemas/plan-output.schema.json"
+    provenance:
+      created_by: "automation:rolekit-init"
+      created_at: "2026-01-25T00:00:00Z"
+      source: "templates/canon/rolekit/rolekit_manifest.template.yml"

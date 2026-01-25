@@ -1,4 +1,10 @@
 {
+  "id": "00.01.02",
+  "repo_name": "owner/repo",
+  "roles_enabled": ["orchestrator", "planner", "qa"],
+  "activation_marker": "GOA_BUILDER_ACTIVATE"
+}
+{
   "detected_markers": [
     {
       "type": "node_package",

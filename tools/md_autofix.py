@@ -20,8 +20,11 @@ import argparse
 from pathlib import Path
 
 # Marker used to indicate files processed by md_autofix
+# `marker_local` is a stable string appended to processed files; keep as simple
+# comment so other tools can detect processed files without executing code.
+marker_local = "<!-- md_autofix: processed -->"
 marker_re = re.compile(r"<!--\s*md_autofix:.*-->")
-# convenience alias used by cleanup and per-file code (safe fallback available via globals())
+# convenience alias used by cleanup and per-file code
 m_local = marker_local
 
 
@@ -116,74 +119,8 @@ def renumber_ordered_blocks(out, path, fixed):
     Appends renumber fixes to `fixed` with 1-based line numbers.
     Returns the mutated `out`.
     """
-    ordered_re = re.compile(r"^(?P<indent>\s*)(?P<num>\d+)\.(?P<sep>\s+)(?P<rest>.*)$")
-    fence_re = re.compile(r"^\s*```")
-    i = 0
-    while i < len(out):
-        # skip fenced code blocks
-        if fence_re.match(out[i]):
-            i += 1
-            while i < len(out) and not fence_re.match(out[i]):
-                i += 1
-            i += 1
-            continue
-        m = ordered_re.match(out[i])
-        if m:
-            # collect block indices allowing a single blank line between items
-            j = i
-            block_indices = []
-            while j < len(out):
-                if fence_re.match(out[j]):
-                    break
-                mm = ordered_re.match(out[j])
-                if mm:
-                    block_indices.append(j)
-                    j += 1
-                    continue
-                # blank line: peek ahead for next ordered item
-                if out[j].strip() == '':
-                    k = j + 1
-                    while k < len(out) and out[k].strip() == '':
-                        k += 1
-                    if k < len(out) and ordered_re.match(out[k]):
-                        # include intervening blanks and continue at next ordered item
-                        j = k
-                        continue
-                    else:
-                        break
-                # non-empty, non-ordered line: treat as nested content if indented
-                # relative to the first item's indent; otherwise this ends the block
-                first_indent = m.group('indent')
-                cur_lead = len(out[j]) - len(out[j].lstrip(' '))
-                if cur_lead > len(first_indent):
-                    # nested content belonging to the current list item
-                    j += 1
-                    continue
-                # otherwise, we've reached a non-nested, non-ordered line -> end block
-                break
-            # renumber collected block sequentially starting at 1
-            counter = 1
-            for idx in block_indices:
-                mm = ordered_re.match(out[idx])
-                if not mm:
-                    continue
-                indent = mm.group("indent")
-                sep = mm.group("sep")
-                rest = mm.group("rest")
-                new_line = f"{indent}{counter}.{sep}{rest}"
-                if out[idx] != new_line:
-                    out[idx] = new_line
-                    fixed.append(
-                        {
-                            "file": path,
-                            "line": idx + 1,
-                            "fix": f"renumber to {counter}.",
-                        }
-                    )
-                counter += 1
-            i = j
-            continue
-        i += 1
+    # Renumbering is intentionally disabled: use renumber_md.py for ordered-list renumbering.
+    # This function is a no-op to avoid automatic changes or counting order warnings.
     return out
 
 
@@ -280,6 +217,7 @@ def process_file(path, state=None):
             if level == 1:
                 if not first_h1_found:
                     first_h1_found = True
+                
                 else:
                     problem_name = "extra top-level heading"
                     action = state.get("policies", {}).get(problem_name, "auto-fix")
@@ -415,24 +353,8 @@ def process_file(path, state=None):
                     {"file": path, "line": j + 1, "fix": "insert blank line after list"}
                 )
             # renumber ordered lists
-            if items:
-                ordered = all(re.match(r"^\s*\d+\.\s+", t[1]) for t in items)
-                if ordered:
-                    counter = 1
-                    for idx, raw in items:
-                        m2 = re.match(r"^(\s*)(\d+)\.(\s+)(.*)$", raw)
-                        if m2:
-                            indent = m2.group(1)
-                            rest = m2.group(4)
-                            out[idx] = f"{indent}{counter}. {rest}"
-                            fixed.append(
-                                {
-                                    "file": path,
-                                    "line": idx + 1,
-                                    "fix": f"renumber to {counter}.",
-                                }
-                            )
-                            counter += 1
+            # Ordered-list renumbering is disabled here. Use tools/renumber_md.py
+            # when explicit renumbering is required. Do not add order warnings or fixes.
             i = j
         else:
             i += 1
@@ -559,33 +481,45 @@ def main():
                     continue
                 text = content.decode("utf-8", errors="replace")
                 if m_local in text:
-                    new_text = (
-                        "\n".join([ln for ln in text.splitlines() if m_local not in ln])
-                        + "\n"
-                    )
-                    with open(fpath, "w", encoding="utf-8") as fh:
-                        fh.write(new_text)
-                    report_entry = {
-                        "file": fpath,
-                        "detected_problems": [],
-                        "fixed": [
-                            {
-                                "file": fpath,
-                                "fix": "remove md_autofix marker from non-md file",
-                            }
-                        ],
-                        "unsolved": [],
-                    }
-                    per_file.append(report_entry)
-                    report["per_file"] = per_file
-                    report["fix_counts"][
-                        "remove md_autofix marker from non-md file"
-                    ] = (
-                        report["fix_counts"].get(
-                            "remove md_autofix marker from non-md file", 0
+                    # Only remove markers that appear as standalone HTML comment
+                    # lines (or start with the md_autofix HTML comment). This
+                    # prevents touching source files that contain the marker as
+                    # a literal inside code (for example: marker_local =
+                    # "<!-- md_autofix: processed -->").
+                    lines = text.splitlines()
+                    new_lines = []
+                    removed_any = False
+                    for ln in lines:
+                        s = ln.strip()
+                        if s == m_local or s.startswith("<!-- md_autofix:"):
+                            removed_any = True
+                            continue
+                        new_lines.append(ln)
+                    if removed_any:
+                        new_text = "\n".join(new_lines) + "\n"
+                        with open(fpath, "w", encoding="utf-8") as fh:
+                            fh.write(new_text)
+                        report_entry = {
+                            "file": fpath,
+                            "detected_problems": [],
+                            "fixed": [
+                                {
+                                    "file": fpath,
+                                    "fix": "remove md_autofix marker from non-md file",
+                                }
+                            ],
+                            "unsolved": [],
+                        }
+                        per_file.append(report_entry)
+                        report["per_file"] = per_file
+                        report["fix_counts"][
+                            "remove md_autofix marker from non-md file"
+                        ] = (
+                            report["fix_counts"].get(
+                                "remove md_autofix marker from non-md file", 0
+                            )
+                            + 1
                         )
-                        + 1
-                    )
             except Exception:
                 # ignore files we cannot read/write
                 continue
